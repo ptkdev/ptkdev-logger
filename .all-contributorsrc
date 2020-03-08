@@ -1,0 +1,36 @@
+{
+  "projectName": "ptkdev-logger",
+  "projectOwner": "ptkdev",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "ptkdev",
+      "name": "Patryk Rzucidło",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/442844?v=4",
+      "profile": "https://ptk.dev",
+      "contributions": [
+        "code",
+        "translation",
+        "doc",
+        "bug"
+      ]
+    },
+    {
+      "login": "agoalofalife",
+      "name": "Ilua Chubarov",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15719824?v=4",
+      "profile": "https://github.com/agoalofalife",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 6,
+  "commitConvention": "none"
+}
