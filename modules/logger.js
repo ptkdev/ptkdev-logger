@@ -55,6 +55,10 @@ class Log {
 			options.error = true;
 		}
 
+		if (typeof options.type === "undefined" || options.type === null) {
+			options.type = "log";
+		}
+
 		if (typeof options.write === "undefined" || options.write === null) {
 			options.write = false;
 		} else if (typeof options.path === "undefined" || options.path === null) {
