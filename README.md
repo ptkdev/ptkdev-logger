@@ -83,7 +83,7 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 ## Methods
 
 | Method | Description | Parameters |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | debug(__message__, __tag__) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
 | info(__message__, __tag__) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
 | warning(__message__, __tag__) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
