@@ -1,5 +1,5 @@
 /**
- * Logger: example
+ * Logger: example (json output)
  * =====================
  *
  * @contributors: Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)
@@ -18,10 +18,10 @@ const options = {
 	"error": true,   // enable/disable all logs with method errors (optional, default enabled - values: true|enabled or false|disabled)
 	"sponsor": true, // enable/disable all logs with method sponsor (optional, default enabled - values: true|enabled or false|disabled)
 	"write": true,   // write the logs into a file, you need set path values (optional, default disabled - values: true|enabled or false|disabled)
-	"type": "log",   // format of logs in files (optional, default log - values: log|json)
+	"type": "json",   // format of logs in files (optional, default log - values: log|json)
 	"path": {        // if write is true, the library writes the logs to a path
-		"debug_log": "./debug.log",  // all logs
-		"error_log": "./errors.log", // only errors logs
+		"debug_log": "./debug.json",  // all logs
+		"error_log": "./errors.json", // only errors logs
 	}
 };
 

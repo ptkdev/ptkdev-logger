@@ -24,7 +24,7 @@
         "html/html-extensions": [".html", ".twig", ".vue"],
 		"html/indent": "tab",
 		"snakecasejs/filter": ["ClassDeclaration", "NewExpression", "AssignmentExpression"],
-		"snakecasejs/whitelist": ["bgRgb", "appendFile"]
+		"snakecasejs/whitelist": ["bgRgb", "appendFile", "FileSync"]
 	},
 	"rules": {
 		"no-multi-spaces": ["error", { "ignoreEOLComments": true, "exceptions": { "VariableDeclarator": true } }],

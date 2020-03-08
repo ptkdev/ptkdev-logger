@@ -8,6 +8,8 @@ databases/
 tests/
 docs/
 logs/
+examples/*.log
+examples/*.json
 docker/
 Dockerfile
 Dockerfile.*

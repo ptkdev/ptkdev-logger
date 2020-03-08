@@ -42,6 +42,8 @@ proguard/
 logs/*.log
 logs/screenshots/*.png
 logs/screenshots/*.jpg
+examples/*.log
+examples/*.json
 databases/*.db
 databases/*.sql
 databases/*.json

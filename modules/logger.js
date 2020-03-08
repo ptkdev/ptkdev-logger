@@ -11,6 +11,8 @@
 const fse = require("fs-extra");
 const chalk = require("chalk");
 const ansi = require("strip-ansi");
+const lowdb = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
 const languages = {
 	"en": require("../translations/en"),
 	"it": require("../translations/it"),
@@ -49,8 +51,8 @@ class Log {
 			options.warning = true;
 		}
 
-		if (typeof options.errors === "undefined" || options.errors === null) {
-			options.errors = true;
+		if (typeof options.error === "undefined" || options.error === null) {
+			options.error = true;
 		}
 
 		if (typeof options.write === "undefined" || options.write === null) {
@@ -72,14 +74,26 @@ class Log {
 	/**
 	 * Date now
 	 * =====================
-	 * Current (now) date and time for prefix of logs
+	 * Current (now) date and time for prefix of logs. Timezone is supported.
+	 *
+	 * @param {string} format - format of date: json, timestamp or string (optional, deafult: string)
 	 *
 	 * @return {string} time - current Date.now()
 	 *
 	 */
-	current_time() {
+	current_time(format = "string") {
 		let tz_offset = (new Date()).getTimezoneOffset() * 60000;
+
+		if (format === "json") {
+			return (new Date(Date.now() - tz_offset)).toISOString();
+		}
+
+		if (format === "timestamp") {
+			return (new Date(Date.now() - tz_offset)).getTime();
+		}
+
 		return (new Date(Date.now() - tz_offset)).toISOString().slice(0, -5).replace("T", " ");
+
 	}
 
 	/**
@@ -93,29 +107,64 @@ class Log {
 	 */
 	append_file(type = "INFO", tag = "", message = "") {
 		if (this.config.write === "enabled" || this.config.write === true) {
-			if (tag !== "") {
-				tag = `${tag}: `;
-			}
-			let log_text = `[${this.current_time()}] [${type.id}] ${tag}${message}\n`;
-
-			fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
-				if (err) {
-					logger.log(err);
+			if (this.config.type === "log") {
+				if (tag !== "") {
+					tag = `${tag}: `;
 				}
-			});
+				let log_text = `[${this.current_time()}] [${type.id}] ${tag}${message}\n`;
 
-			if (type.id === "ERROR") {
-				fse.appendFile(this.config.path.error_log, ansi(log_text), (err) => {
+				fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
 					if (err) {
 						logger.log(err);
 					}
 				});
+
+				if (type.id === "ERROR") {
+					fse.appendFile(this.config.path.error_log, ansi(log_text), (err) => {
+						if (err) {
+							logger.err(err);
+						}
+					});
+				}
+			} else {
+				const debug_adapter = new FileSync(this.config.path.debug_log);
+				const debug_db = lowdb(debug_adapter);
+				const error_adapter = new FileSync(this.config.path.error_log);
+				const error_db = lowdb(error_adapter);
+				let level = 0;
+
+				switch (type.id) {
+					case "ERROR":
+						level = 1;
+						break;
+					case "WARNING":
+						level = 2;
+						break;
+					case "INFO":
+						level = 3;
+						break;
+					case "DEBUG":
+						level = 4;
+						break;
+					default:
+						level = 5;
+						break;
+				}
+
+				debug_db.defaults({logs: []}).write();
+				error_db.defaults({logs: []}).write();
+
+				debug_db.get("logs").push({level: level, time: this.current_time("timestamp"), date: this.current_time("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
+
+				if (type.id === "ERROR") {
+					error_db.get("logs").push({level: level, time: this.current_time("timestamp"), date: this.current_time("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
+				}
 			}
 		}
 	}
 
 	/**
-	 * Output of console log
+	 * Write to stdout
 	 * =====================
 	 * Log manager - don't use this directly. Use info() error() debug() warning()
 	 *
@@ -133,6 +182,28 @@ class Log {
 			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
 		} else {
 			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
+		}
+	}
+
+	/**
+	 * Write to stderr
+	 * =====================
+	 * Log manager - don't use this directly. Use info() error() debug() warning()
+	 *
+	 * @param {string} type - example: INFO/WARNING/ERROR/DEBUG or other valid type string (see ./types.js) (mandatory)
+	 * @param {string} tag - func unique tag (optional)
+	 * @param {string} message - error, warning or info description (mandatory)
+	 *
+	 */
+	err(type = "ERROR", tag = "", message = "") {
+		let time = this.TYPES_LOG.TIME;
+		if (tag !== "") {
+			tag = ` ${tag}:`;
+		}
+		if (this.config.colors === "enabled" || this.config.colors === true) {
+			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
+		} else {
+			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
 		}
 	}
 
@@ -178,8 +249,8 @@ class Log {
 	 *
 	 */
 	error(message = "", tag = "") {
-		if (this.config.errors === "enabled" || this.config.errors === true) {
-			this.log(this.TYPES_LOG.ERROR, tag, `${message}`);
+		if (this.config.error === "enabled" || this.config.error === true) {
+			this.err(this.TYPES_LOG.ERROR, tag, `${message}`);
 			this.append_file(this.TYPES_LOG.ERROR, tag, message);
 		}
 	}

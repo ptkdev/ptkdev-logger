@@ -1,8 +1,8 @@
-[![Beautiful Node Logger: the best alternative to the console.log statement](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/ptkdev-logger-logo.png)](https://www.npmjs.com/package/@ptkdev/logger)
+[![Beautiful Logger for Node.js: the best alternative to the console.log statement](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/ptkdev-logger-logo.png)](https://www.npmjs.com/package/@ptkdev/logger)
 
-# 🦒 Beautiful Node Logger
+# 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.0.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.1.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -27,10 +27,12 @@
 * [✔️] Easy to use
 * [✔️] MIT License
 * [✔️] The best alternative to the console.log statement
+* [✔️] Write stdout logs to file (supported format: text/log and json)
+* [✔️] The JSON logs format is compatible with [pinojs](https://github.com/pinojs/pino)
 * [✔️] Translations: 🇬🇧 🇮🇹 🇵🇱 (Help me ❤️)
 
 ## 👔 Screenshot
-[![Beautiful Node Logger](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-screen1.png)](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-screen1.png)
+[![Beautiful Logger for Node.js](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-screen1.png)](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-screen1.png)
 
 ## 🚀 Installation
 1. In your node project run: `npm install @ptkdev/logger --save`
@@ -51,9 +53,10 @@ const options = {
 	"debug": true,
 	"info": true,
 	"warning": true,
-	"errors": true,
+	"error": true,
 	"sponsor": true,
 	"write": true,
+	"type": "log",
 	"path": {
 		"debug_log": "./debug.log",
 		"error_log": "./errors.log",
@@ -75,22 +78,23 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 | debug | Enable all logs with method debug | true\|enabled\|false\|disabled | true |
 | info | Enable all logs with method info | true\|enabled\|false\|disabled | true |
 | warning | Enable all logs with method warning | true\|enabled\|false\|disabled | true |
-| errors | Enable all logs with method errors | true\|enabled\|false\|disabled | true |
+| error | Enable all logs with method errors | true\|enabled\|false\|disabled | true |
 | sponsor | Enable all logs with method sponsor | true\|enabled\|false\|disabled | true |
-| write |  Write the logs into a file, you need set path values | true\|enabled\|false\|disabled | false |
+| write | Write the logs into a file, you need set path values | true\|enabled\|false\|disabled | false |
+| type | Format of logs in files | log\|json | log |
 | path | If write is true, the library writes the logs to a path | Object | `{"debug_log": "./debug.log", "error_log": "./errors.log"}` |
 
 ## Methods
 
 | Method | Description | Parameters |
 | --- | --- | --- |
-| debug(__message__, __tag__) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| info(__message__, __tag__) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| warning(__message__, __tag__) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| errors(__message__, __tag__) | `message`: Display errors log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| sponsor(__message__, __tag__) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| stackoverflow(__message__, __tag__, __error_string__) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
-| docs(__message__, __url__, __tag__,) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
+| **debug**(__message__, __tag__) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **info**(__message__, __tag__) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **warning**(__message__, __tag__) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **error**(__message__, __tag__) | `message`: Display errors log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **sponsor**(__message__, __tag__) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **stackoverflow**(__message__, __tag__, __error_string__) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
+| **docs**(__message__, __url__, __tag__) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
 
 ## 📚 Documentation
 Run `npm run docs`
