@@ -2,7 +2,7 @@
 
 # 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.1.1-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.1.2-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -18,7 +18,7 @@
 - 👔 [Screenshot](#-screenshot)
 - 🚀 [How to use](#-installation)
 - 📚 [Documentation](#-documentation)
-- ❤️ [Contributing](#-contributing)
+- 👨‍💻 [Contributing](#-contributing)
 - 🐛 [Known Bugs](https://github.com/ptkdev/ptkdev-logger/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 - 🍻 Community:
   - <img src="https://raw.githubusercontent.com/ptkdev/ptkdev-logger/master/.github/assets/social_discord.png" height="18px"> [Discord](http://discord.ptkdev.io) ([🇬🇧 English Channel](https://discord.gg/tWtqt4B) | [🇮🇹 Italian Channel](https://discord.gg/q29uZnm) | [🇵🇱 Polish Channel](https://discord.gg/akjuWJX))
@@ -109,8 +109,8 @@ Thank you to all our backers! 🙏 Become a backer on [patreon](https://www.patr
 
 [![](https://api.ptkdev.io/backers/backer1.png)](https://api.ptkdev.io/backers/backer1.html) [![](https://api.ptkdev.io/backers/backer2.png)](https://api.ptkdev.io/backers/backer2.html) [![](https://api.ptkdev.io/backers/backer3.png)](https://api.ptkdev.io/backers/backer3.html) [![](https://api.ptkdev.io/backers/backer4.png)](https://api.ptkdev.io/backers/backer4.html) [![](https://api.ptkdev.io/backers/backer5.png)](https://api.ptkdev.io/backers/backer5.html) [![](https://api.ptkdev.io/backers/backer6.png)](https://api.ptkdev.io/backers/backer6.html) [![](https://api.ptkdev.io/backers/backer7.png)](https://api.ptkdev.io/backers/backer7.html) [![](https://api.ptkdev.io/backers/backer8.png)](https://api.ptkdev.io/backers/backer8.html) [![](https://api.ptkdev.io/backers/backer9.png)](https://api.ptkdev.io/backers/backer9.html) [![](https://api.ptkdev.io/backers/backer10.png)](https://api.ptkdev.io/backers/backer10.html) [![](https://api.ptkdev.io/backers/backer11.png)](https://api.ptkdev.io/backers/backer11.html) [![](https://api.ptkdev.io/backers/backer12.png)](https://api.ptkdev.io/backers/backer12.html) [![](https://api.ptkdev.io/backers/backer13.png)](https://api.ptkdev.io/backers/backer13.html) [![](https://api.ptkdev.io/backers/backer14.png)](https://api.ptkdev.io/backers/backer14.html) [![](https://api.ptkdev.io/backers/backer15.png)](https://api.ptkdev.io/backers/backer15.html)
 
-## ❤️ Contributing
-I 💟 contributions! I will happily accept your pull request! Translations, grammatical corrections (GrammarNazi you are welcome! Yes my English is bad, sorry), etc... Do not be afraid, if the code is not perfect we will work together 👯 and remember to insert your name in `.all-contributorsrc` and `package.json` file.
+## 👨‍💻 Contributing
+I ❤️ contributions! I will happily accept your pull request! Translations, grammatical corrections (GrammarNazi you are welcome! Yes my English is bad, sorry), etc... Do not be afraid, if the code is not perfect we will work together 👯 and remember to insert your name in `.all-contributorsrc` and `package.json` file.
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
