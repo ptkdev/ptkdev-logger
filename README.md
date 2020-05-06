@@ -18,6 +18,8 @@
 - 👔 [Screenshot](#-screenshot)
 - 🚀 [How to use](#-installation)
 - 📚 [Documentation](#-documentation)
+- - 🧰 [Options](#-options)
+- - 🔌 [Methods](#-methods)
 - 👨‍💻 [Contributing](#-contributing)
 - 🐛 [Known Bugs](https://github.com/ptkdev/ptkdev-logger/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 - 🍻 Community:
@@ -69,7 +71,7 @@ logger.info("message");
 
 See folder `examples`, run with `node example.js`. Below is available a description of `options` values and all logger methods.
 
-## Options
+## 🧰 Options
 
 | Parameter | Description | Values | Default value |
 | --- | --- | --- | --- |
@@ -84,7 +86,7 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 | type | Format of logs in files | log / json | log |
 | path | If write is true, the library writes the logs to a path | Object | `{"debug_log": "./debug.log", "error_log": "./errors.log"}` |
 
-## Methods
+## 🔌 Methods
 
 | Method | Description | Parameters |
 | --- | --- | --- |
