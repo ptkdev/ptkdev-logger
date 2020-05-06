@@ -88,13 +88,13 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 
 | Method | Description | Parameters |
 | --- | --- | --- |
-| `debug`(__message__, __tag__) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| `info`(__message__, __tag__) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| `warning`(__message__, __tag__) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| `error`(__message__, __tag__) | `message`: Display errors log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| `sponsor`(__message__, __tag__) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| `stackoverflow`(__message__, __tag__, __error_string__) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
-| `docs`(__message__, __url__, __tag__) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
+| **debug**(`message`, `tag`) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **info**(`message`, `tag`) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **warning**(`message`, `tag`) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **error**(`message`, `tag`) | `message`: Display errors log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **sponsor**(`message`, `tag`) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| **stackoverflow**(`message`, `tag`, `error_string`) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
+| **docs**(`message`, `url`, `tag`) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
 
 ## 📚 Documentation
 Run `npm run docs`
