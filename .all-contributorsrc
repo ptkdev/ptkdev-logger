@@ -29,6 +29,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Bruck1701",
+      "name": "Bruno Kümmel",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17711277?v=4",
+      "profile": "https://github.com/Bruck1701",
+      "contributions": [
+        "code",
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 6,
