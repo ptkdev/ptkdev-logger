@@ -73,28 +73,28 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 
 | Parameter | Description | Values | Default value |
 | --- | --- | --- | --- |
-| language | Set language of log type | en\|it\|pl | en |
-| colors | Enable colors in terminal | true\|enabled\|false\|disabled | true |
-| debug | Enable all logs with method debug | true\|enabled\|false\|disabled | true |
-| info | Enable all logs with method info | true\|enabled\|false\|disabled | true |
-| warning | Enable all logs with method warning | true\|enabled\|false\|disabled | true |
-| error | Enable all logs with method errors | true\|enabled\|false\|disabled | true |
-| sponsor | Enable all logs with method sponsor | true\|enabled\|false\|disabled | true |
-| write | Write the logs into a file, you need set path values | true\|enabled\|false\|disabled | false |
-| type | Format of logs in files | log\|json | log |
+| language | Set language of log type | en / it / pl / es / pt | en |
+| colors | Enable colors in terminal | true / enabled / false / disabled | true |
+| debug | Enable all logs with method debug | true / enabled / false / disabled | true |
+| info | Enable all logs with method info | true / enabled / false / disabled | true |
+| warning | Enable all logs with method warning | true / enabled / false / disabled | true |
+| error | Enable all logs with method errors | true / enabled / false / disabled | true |
+| sponsor | Enable all logs with method sponsor | true / enabled / false / disabled | true |
+| write | Write the logs into a file, you need set path values | true / enabled / false / disabled | false |
+| type | Format of logs in files | log / json | log |
 | path | If write is true, the library writes the logs to a path | Object | `{"debug_log": "./debug.log", "error_log": "./errors.log"}` |
 
 ## Methods
 
 | Method | Description | Parameters |
 | --- | --- | --- |
-| **debug**(__message__, __tag__) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| **info**(__message__, __tag__) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| **warning**(__message__, __tag__) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| **error**(__message__, __tag__) | `message`: Display errors log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| **sponsor**(__message__, __tag__) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
-| **stackoverflow**(__message__, __tag__, __error_string__) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
-| **docs**(__message__, __url__, __tag__) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
+| `debug`(__message__, __tag__) | `message`: Display debug log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| `info`(__message__, __tag__) | `message`: Display info log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| `warning`(__message__, __tag__) | `message`: Display warning log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| `error`(__message__, __tag__) | `message`: Display errors log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| `sponsor`(__message__, __tag__) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
+| `stackoverflow`(__message__, __tag__, __error_string__) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
+| `docs`(__message__, __url__, __tag__) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
 
 ## 📚 Documentation
 Run `npm run docs`
