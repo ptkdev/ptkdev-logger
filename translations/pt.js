@@ -10,7 +10,7 @@
  *
  * Param: don't translate words between ## ##, example: ##ciao##
  *
- * @contributors: Bruno Kummel
+ * @contributors: Bruno Kummel [@Bruck1701] <kummel@gmail.com> (https://github.com/Bruck1701)
  *
  * @license: CC BY 4.0 License
  *

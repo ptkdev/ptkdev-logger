@@ -2,7 +2,7 @@
 
 # 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.1.3-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.2.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -29,7 +29,7 @@
 * [✔️] The best alternative to the console.log statement
 * [✔️] Write stdout logs to file (supported format: text/log and json)
 * [✔️] The JSON logs format is compatible with [pinojs](https://github.com/pinojs/pino)
-* [✔️] Translations: 🇬🇧 🇮🇹 🇵🇱 (Help me ❤️)
+* [✔️] Translations: 🇬🇧 🇮🇹 🇵🇱 🇪🇸 🇵🇹 (Help me ❤️)
 
 ## 👔 Screenshot
 [![Beautiful Logger for Node.js](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-screen1.png)](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-screen1.png)

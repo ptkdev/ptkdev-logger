@@ -24,11 +24,8 @@ const logger = console;
 let Types = require("./types");
 
 class Log {
-	constructor(options = new Object()) {
-		if (
-			typeof options.language === "undefined" ||
-			options.language === null
-		) {
+	constructor(options = new Object) {
+		if (typeof options.language === "undefined" || options.language === null) {
 			options.language = "en";
 		} else {
 			Types.INFO.label = languages[options.language]["INFO"];
@@ -36,8 +33,7 @@ class Log {
 			Types.ERROR.label = languages[options.language]["ERROR"];
 			Types.DEBUG.label = languages[options.language]["DEBUG"];
 			Types.DOCS.label = languages[options.language]["DOCS"];
-			Types.STACKOVERFLOW.label =
-				languages[options.language]["STACKOVERFLOW"];
+			Types.STACKOVERFLOW.label = languages[options.language]["STACKOVERFLOW"];
 			Types.SPONSOR.label = languages[options.language]["SPONSOR"];
 		}
 
@@ -53,10 +49,7 @@ class Log {
 			options.info = true;
 		}
 
-		if (
-			typeof options.warning === "undefined" ||
-			options.warning === null
-		) {
+		if (typeof options.warning === "undefined" || options.warning === null) {
 			options.warning = true;
 		}
 
@@ -70,21 +63,12 @@ class Log {
 
 		if (typeof options.write === "undefined" || options.write === null) {
 			options.write = false;
-		} else if (
-			typeof options.path === "undefined" ||
-			options.path === null
-		) {
-			if (
-				typeof options.debug_log === "undefined" ||
-				options.debug_log === null
-			) {
+		} else if (typeof options.path === "undefined" || options.path === null) {
+			if (typeof options.debug_log === "undefined" || options.debug_log === null) {
 				options.debug_log = "./debug.log";
 			}
 
-			if (
-				typeof options.error_log === "undefined" ||
-				options.error_log === null
-			) {
+			if (typeof options.error_log === "undefined" || options.error_log === null) {
 				options.error_log = "./errors.log";
 			}
 		}
@@ -104,20 +88,18 @@ class Log {
 	 *
 	 */
 	current_time(format = "string") {
-		let tz_offset = new Date().getTimezoneOffset() * 60000;
+		let tz_offset = (new Date()).getTimezoneOffset() * 60000;
 
 		if (format === "json") {
-			return new Date(Date.now() - tz_offset).toISOString();
+			return (new Date(Date.now() - tz_offset)).toISOString();
 		}
 
 		if (format === "timestamp") {
-			return new Date(Date.now() - tz_offset).getTime();
+			return (new Date(Date.now() - tz_offset)).getTime();
 		}
 
-		return new Date(Date.now() - tz_offset)
-			.toISOString()
-			.slice(0, -5)
-			.replace("T", " ");
+		return (new Date(Date.now() - tz_offset)).toISOString().slice(0, -5).replace("T", " ");
+
 	}
 
 	/**
@@ -135,30 +117,20 @@ class Log {
 				if (tag !== "") {
 					tag = `${tag}: `;
 				}
-				let log_text = `[${this.current_time()}] [${
-					type.id
-				}] ${tag}${message}\n`;
+				let log_text = `[${this.current_time()}] [${type.id}] ${tag}${message}\n`;
 
-				fse.appendFile(
-					this.config.path.debug_log,
-					ansi(log_text),
-					err => {
-						if (err) {
-							logger.log(err);
-						}
+				fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
+					if (err) {
+						logger.log(err);
 					}
-				);
+				});
 
 				if (type.id === "ERROR") {
-					fse.appendFile(
-						this.config.path.error_log,
-						ansi(log_text),
-						err => {
-							if (err) {
-								logger.err(err);
-							}
+					fse.appendFile(this.config.path.error_log, ansi(log_text), (err) => {
+						if (err) {
+							logger.err(err);
 						}
-					);
+					});
 				}
 			} else {
 				const debug_adapter = new FileSync(this.config.path.debug_log);
@@ -188,30 +160,10 @@ class Log {
 				debug_db.defaults({logs: []}).write();
 				error_db.defaults({logs: []}).write();
 
-				debug_db
-					.get("logs")
-					.push({
-						level: level,
-						time: this.current_time("timestamp"),
-						date: this.current_time("json"),
-						msg: ansi(message),
-						tag: ansi(tag),
-						v: 1
-					})
-					.write();
+				debug_db.get("logs").push({level: level, time: this.current_time("timestamp"), date: this.current_time("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
 
 				if (type.id === "ERROR") {
-					error_db
-						.get("logs")
-						.push({
-							level: level,
-							time: this.current_time("timestamp"),
-							date: this.current_time("json"),
-							msg: ansi(message),
-							tag: ansi(tag),
-							v: 1
-						})
-						.write();
+					error_db.get("logs").push({level: level, time: this.current_time("timestamp"), date: this.current_time("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
 				}
 			}
 		}
@@ -233,21 +185,9 @@ class Log {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.log(
-				chalk`${type.bgcolor(type.label)}${time.bgcolor(
-					` ${this.current_time()} `
-				)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`
-			);
+			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
 		} else {
-			logger.log(
-				ansi(
-					chalk`${type.bgcolor(type.label)}${time.bgcolor(
-						` ${this.current_time()} `
-					)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(
-						message
-					)}`
-				)
-			);
+			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
 		}
 	}
 
@@ -267,21 +207,9 @@ class Log {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.error(
-				chalk`${type.bgcolor(type.label)}${time.bgcolor(
-					` ${this.current_time()} `
-				)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`
-			);
+			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
 		} else {
-			logger.error(
-				ansi(
-					chalk`${type.bgcolor(type.label)}${time.bgcolor(
-						` ${this.current_time()} `
-					)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(
-						message
-					)}`
-				)
-			);
+			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
 		}
 	}
 
@@ -360,16 +288,8 @@ class Log {
 	 *
 	 */
 	docs(message = "", url = "", tag = "") {
-		this.log(
-			this.TYPES_LOG.DOCS,
-			tag,
-			`${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`
-		);
-		this.append_file(
-			this.TYPES_LOG.DOCS,
-			tag,
-			`${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`
-		);
+		this.log(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
+		this.append_file(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
 	}
 
 	/**
@@ -387,19 +307,9 @@ class Log {
 			error_message = message;
 		}
 
-		let url = `https://stackoverflow.com/search?q=${encodeURI(
-			error_message
-		)}`;
-		this.log(
-			this.TYPES_LOG.STACKOVERFLOW,
-			tag,
-			`${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`
-		);
-		this.append_file(
-			this.TYPES_LOG.STACKOVERFLOW,
-			tag,
-			`${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`
-		);
+		let url = `https://stackoverflow.com/search?q=${encodeURI(error_message)}`;
+		this.log(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
+		this.append_file(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
 	}
 
 	/**
