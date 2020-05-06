@@ -18,7 +18,7 @@
 		"url": "https://github.com/ptkdev/ptkdev-logger/issues"
 	},
 	"scripts": {
-		"example": "node example/exampe.js",
+		"example": "node examples/example.js",
 		"clean": "rm -rf node_modules package-lock.json && npm install",
 		"update": "rm -f package-lock.json && npm update",
 		"lint": "eslint ./ --cache --ignore-pattern .gitignore",
@@ -78,6 +78,7 @@
 		"markserv": "latest"
 	},
 	"contributors": [
-		"Ilua Chubarov [@Ilya] <agoalofalife@gmail.com> (https://github.com/agoalofalife)"
+		"Ilua Chubarov [@Ilya] <agoalofalife@gmail.com> (https://github.com/agoalofalife)",
+		"Bruno Kummel <kummel@gmail.com> (https://github.com/Bruck1701)"
 	]
 }
