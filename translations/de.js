@@ -16,11 +16,11 @@
  *
  */
 module.exports = {
-	INFO: " | INFORMATION     ",
-	WARNING: " | WARNUNG          ",
-	ERROR: " | FEHLER           ",
+	INFO: " | INFORMATION    ",
+	WARNING: " | WARNUNG        ",
+	ERROR: " | FEHLER         ",
 	DEBUG: " | DEBUG          ",
-	DOCS: " | DOKUMENTATION   ",
+	DOCS: " | DOKUMENTATION  ",
 	STACKOVERFLOW: " | STACKOVERFLOW  ",
 	SPONSOR: " | SPONSOR        "
 };

@@ -17,9 +17,9 @@
  */
 module.exports = {
 	INFO: " | ИНФОРМАЦИЯ     ",
-	WARNING: " | ПРЕДУПРЕЖДЕНИЕ          ",
-	ERROR: " | ОШИБКА           ",
-	DEBUG: " | ОТЛАДКА          ",
+	WARNING: " | ПРЕДУПРЕЖДЕНИЕ ",
+	ERROR: " | ОШИБКА         ",
+	DEBUG: " | ОТЛАДКА        ",
 	DOCS: " | ДОКУМЕНТАЦИЯ   ",
 	STACKOVERFLOW: " | STACKOVERFLOW  ",
 	SPONSOR: " | СПОНСОР        "
