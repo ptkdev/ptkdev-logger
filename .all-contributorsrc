@@ -39,6 +39,15 @@
         "code",
         "translation"
       ]
+    },
+    {
+      "login": "alinaosv",
+      "name": "Alina Osv",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/60554247?v=4",
+      "profile": "https://github.com/alinaosv",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 6,
