@@ -10,7 +10,7 @@
 const Logger = require("./../modules/logger"); // in your project use: require("@ptkdev/logger");
 
 const options = {
-	"language": "en", // set language of log type, NOTE: please help with translations! (optional, default en - values: en|it|pl)
+	"language": "en", // set language of log type, NOTE: please help with translations! (optional, default en - values: en|it|pl|es|pt|de|ru)
 	"colors": true,  // enable/disable colors in terminal (optional, default enabled - values: true|enabled or false|disabled)
 	"debug": true,   // enable/disable all logs with method debug (optional, default enabled - values: true|enabled or false|disabled)
 	"info": true,    // enable/disable all logs with method info (optional, default enabled - values: true|enabled or false|disabled)

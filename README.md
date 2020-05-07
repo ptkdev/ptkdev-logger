@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://ptk.dev"><img src="https://avatars1.githubusercontent.com/u/442844?v=4" width="100px;" alt=""/><br /><sub><b>Patryk Rzucidło</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=ptkdev" title="Code">💻</a> <a href="#translation-ptkdev" title="Translation">🌍</a> <a href="https://github.com/ptkdev/ptkdev-logger/commits?author=ptkdev" title="Documentation">📖</a> <a href="https://github.com/ptkdev/ptkdev-logger/issues?q=author%3Aptkdev" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/agoalofalife"><img src="https://avatars1.githubusercontent.com/u/15719824?v=4" width="100px;" alt=""/><br /><sub><b>Ilua Chubarov</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=agoalofalife" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Bruck1701"><img src="https://avatars2.githubusercontent.com/u/17711277?v=4" width="100px;" alt=""/><br /><sub><b>Bruno Kümmel</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=Bruck1701" title="Code">💻</a> <a href="#translation-Bruck1701" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/alinaosv"><img src="https://avatars3.githubusercontent.com/u/60554247?v=4" width="100px;" alt=""/><br /><sub><b>Alina Osv</b></sub></a><br /><a href="#translation-alinaosv" title="Translation">🌍</a></td>
   </tr>
 </table>
 
