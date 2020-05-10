@@ -1,7 +1,7 @@
 {
 	"name": "@ptkdev/logger",
 	"description": "Beautiful Logger for Node.js: the best alternative to the console.log statement",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"main": "modules/logger.js",
 	"author": "Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)",
 	"license": "MIT",
