@@ -59,7 +59,7 @@ const options = {
 	"sponsor": true,
 	"write": true,
 	"type": "log",
-	"path": {
+	"path": { // remember: add logs folder or files to .gitignore
 		"debug_log": "./debug.log",
 		"error_log": "./errors.log",
 	}
