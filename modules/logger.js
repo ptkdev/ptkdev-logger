@@ -21,6 +21,7 @@ const languages = {
 	es: require("../translations/es"),
 	de: require("../translations/de"),
 	ru: require("../translations/ru"),
+	fr: require("../translations/fr")
 };
 const logger = console;
 let Types = require("./types");
