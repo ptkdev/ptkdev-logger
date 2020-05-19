@@ -11,7 +11,6 @@
 		"ecmaVersion": 2019
 	},
 	"plugins": [
-		"snakecasejs",
 		"jsdoc",
 		"jest"
 	],
@@ -20,11 +19,7 @@
 			"tagNamePreference": {
 				"returns": "return"
 			}
-		},
-        "html/html-extensions": [".html", ".twig", ".vue"],
-		"html/indent": "tab",
-		"snakecasejs/filter": ["ClassDeclaration", "NewExpression", "AssignmentExpression"],
-		"snakecasejs/whitelist": ["bgRgb", "appendFile", "FileSync"]
+		}
 	},
 	"rules": {
 		"no-multi-spaces": ["error", { "ignoreEOLComments": true, "exceptions": { "VariableDeclarator": true } }],
@@ -57,7 +52,6 @@
 	    "jest/no-identical-title": "error",
 	    "jest/prefer-to-have-length": "warn",
 		"jest/valid-expect": "error",
-		"snakecasejs/snakecasejs": "error",
 		"jsdoc/require-param": 1,
 		"jsdoc/require-param-description": 1,
 		"jsdoc/require-param-name": 1,

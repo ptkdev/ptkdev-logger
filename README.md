@@ -2,7 +2,7 @@
 
 # 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.4.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.5.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -20,6 +20,7 @@
 - 📚 [Documentation](#-documentation)
 - - 🧰 [Options](#-options)
 - - 🔌 [Methods](#-methods)
+- - 🎨 [Palette](#-palette)
 - 👨‍💻 [Contributing](#-contributing)
 - 🐛 [Known Bugs](https://github.com/ptkdev/ptkdev-logger/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 - 🍻 Community:
@@ -28,6 +29,8 @@
 ## 💡 Features
 * [✔️] Easy to use
 * [✔️] MIT License
+* [✔️] Palette (🎨 Customize colors)
+* [✔️] Logrotate
 * [✔️] The best alternative to the console.log statement
 * [✔️] Write stdout logs to file (supported format: text/log and json)
 * [✔️] The JSON logs format is compatible with [pinojs](https://github.com/pinojs/pino)
@@ -59,6 +62,10 @@ const options = {
 	"sponsor": true,
 	"write": true,
 	"type": "log",
+	"rotate": {
+		"size": "10M",
+		"encoding": "utf8"
+	},
 	"path": { // remember: add logs folder or files to .gitignore
 		"debug_log": "./debug.log",
 		"error_log": "./errors.log",
@@ -69,22 +76,24 @@ const logger = new Logger(options);
 logger.info("message");
 ```
 
-See folder `examples`, run with `node example.js`. Below is available a description of `options` values and all logger methods.
+See folder `examples`, run with `node example.js`. Below is available a description of `options` values.
 
 ## 🧰 Options
 
-| Parameter | Description | Values | Default value |
-| --- | --- | --- | --- |
-| language | Set language of log type | en / it / pl / es / pt / de / ru / fr | en |
-| colors | Enable colors in terminal | true / enabled / false / disabled | true |
-| debug | Enable all logs with method debug | true / enabled / false / disabled | true |
-| info | Enable all logs with method info | true / enabled / false / disabled | true |
-| warning | Enable all logs with method warning | true / enabled / false / disabled | true |
-| error | Enable all logs with method errors | true / enabled / false / disabled | true |
-| sponsor | Enable all logs with method sponsor | true / enabled / false / disabled | true |
-| write | Write the logs into a file, you need set path values | true / enabled / false / disabled | false |
-| type | Format of logs in files | log / json | log |
-| path | If write is true, the library writes the logs to a path | Object | `{"debug_log": "./debug.log", "error_log": "./errors.log"}` |
+| Parameter | Description | Values | Default value | Available since |
+| --- | --- | --- | --- | --- |
+| language | Set language of log type | en / it / pl / es / pt / de / ru / fr | en | **v1.0.0** |
+| colors | Enable colors in terminal | true / enabled / false / disabled | true | **v1.0.0** |
+| debug | Enable all logs with method debug | true / enabled / false / disabled | true | **v1.0.0** |
+| info | Enable all logs with method info | true / enabled / false / disabled | true | **v1.0.0** |
+| warning | Enable all logs with method warning | true / enabled / false / disabled | true | **v1.0.0** |
+| error | Enable all logs with method errors | true / enabled / false / disabled | true | **v1.0.0** |
+| sponsor | Enable all logs with method sponsor | true / enabled / false / disabled | true | **v1.0.0** |
+| write | Write the logs into a file, you need set path values | true / enabled / false / disabled | false | **v1.0.0** |
+| type | Format of logs in files | log / json | log | **v1.0.0** |
+| rotate | Rotates the log files when size exceeds this value | `10B` / `10K` / `10M` / `10G` | `"rotate": {"size": "10M"}` | **v1.5.0** |
+| palette | Change palette with hexcode colors |  `{ "palette": { "info": { "label": "#ffffff", "text": "#4CAF50", "background": "#4CAF50" } }` | default palette | **v1.5.0** |
+| path | If write is true, the library writes the logs to a path | Object | `{"debug_log": "./debug.log", "error_log": "./errors.log"}` | **v1.0.0** |
 
 ## 🔌 Methods
 
@@ -97,6 +106,17 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 | **sponsor**(`message`, `tag`) | `message`: Display sponsor log message <br> `tag`: prefix of message | `message`: string (mandatory) <br> `tag`: string (optional) |
 | **stackoverflow**(`message`, `tag`, `error_string`) | `message`: Display stackoverflow log message <br> `tag`: prefix of message <br> `error_string`: query for stackoverflow, if empty we use message param | `message`: string (mandatory) <br> `tag`: string (optional) <br> `error_string`: string (optional) |
 | **docs**(`message`, `url`, `tag`) | `message`: Display docs log message <br> `url`: link of documentation <br> `tag`: prefix of message | `message`: string (mandatory) <br> `url`: string (optional) <br> `tag`: string (optional) |
+
+## 🎨 Palette
+
+[![Beautiful Logger for Node.js](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-palette.png)](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-palette.png)
+
+You can customize palette colors with `options.palette` with hexcode values.
+- `label` is text on left (INFORMATION / ERROR / DOCS, etc..)
+- `text` is message of log on right
+- `background` is background color on left side
+
+See folder `examples`, run with `node example.js`.
 
 ## 📚 Documentation
 Run `npm run docs`
