@@ -20,8 +20,8 @@ const options = {
 	"write": true,   // write the logs into a file, you need set path values (optional, default disabled - values: true|enabled or false|disabled)
 	"type": "log",   // format of logs in files (optional, default log - values: log|json)
 	"rotate": {
-		size: "10M",  // Rotates the file when size exceeds 10 megabytes (optional, default 10M - values: 10B (byte) / 10K (kilobyte)/ 10M (megabyte)/ 10G (gigabyte))
-		encoding: "utf8"
+		"size": "10M",  // Rotates the file when size exceeds 10 megabytes (optional, default 10M - values: 10B (byte) / 10K (kilobyte)/ 10M (megabyte)/ 10G (gigabyte))
+		"encoding": "utf8"
 	},
 	"path": {        // if write is true, the library writes the logs to a path
 		"debug_log": "./debug.log",  // all logs

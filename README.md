@@ -29,6 +29,8 @@
 ## 💡 Features
 * [✔️] Easy to use
 * [✔️] MIT License
+* [✔️] Palette (🎨 Customize colors)
+* [✔️] Logrotate
 * [✔️] The best alternative to the console.log statement
 * [✔️] Write stdout logs to file (supported format: text/log and json)
 * [✔️] The JSON logs format is compatible with [pinojs](https://github.com/pinojs/pino)
@@ -61,8 +63,8 @@ const options = {
 	"write": true,
 	"type": "log",
 	"rotate": {
-		size: "10M",
-		encoding: "utf8"
+		"size": "10M",
+		"encoding": "utf8"
 	},
 	"path": { // remember: add logs folder or files to .gitignore
 		"debug_log": "./debug.log",
