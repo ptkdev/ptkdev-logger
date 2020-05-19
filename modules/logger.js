@@ -8,9 +8,11 @@
  * @license: MIT License
  *
  */
+const path = require("path");
 const fse = require("fs-extra");
 const chalk = require("chalk");
 const ansi = require("strip-ansi");
+const rfs = require("rotating-file-stream");
 const lowdb = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const languages = {
@@ -38,6 +40,50 @@ class Log {
 			Types.DOCS.label = languages[options.language]["DOCS"];
 			Types.STACKOVERFLOW.label = languages[options.language]["STACKOVERFLOW"];
 			Types.SPONSOR.label = languages[options.language]["SPONSOR"];
+		}
+
+		if (typeof options.palette === "undefined" || options.palette === null) {
+			options.palette = null;
+		} else {
+			if (typeof options.palette.info !== "undefined" && options.palette.info !== null) {
+				Types.INFO.bgcolor = (typeof options.palette.info.background === "undefined" || options.palette.info.background === null) ? Types.INFO.bgcolor : chalk.bgHex(options.palette.info.background).hex(options.palette.info.label);
+				Types.INFO.color = (typeof options.palette.info.text === "undefined" || options.palette.info.text === null) ? Types.INFO.color : chalk.hex(options.palette.info.text);
+			}
+
+			if (typeof options.palette.warning !== "undefined" && options.palette.warning !== null) {
+				Types.WARNING.bgcolor = (typeof options.palette.warning.background === "undefined" || options.palette.warning.background === null) ? Types.WARNING.bgcolor : chalk.bgHex(options.palette.warning.background).hex(options.palette.warning.label);
+				Types.WARNING.color = (typeof options.palette.warning.text === "undefined" || options.palette.warning.text === null) ? Types.WARNING.color : chalk.hex(options.palette.warning.text);
+			}
+
+			if (typeof options.palette.error !== "undefined" && options.palette.error !== null) {
+				Types.ERROR.bgcolor = (typeof options.palette.error.background === "undefined" || options.palette.error.background === null) ? Types.ERROR.bgcolor : chalk.bgHex(options.palette.error.background).hex(options.palette.error.label);
+				Types.ERROR.color = (typeof options.palette.error.text === "undefined" || options.palette.error.text === null) ? Types.ERROR.color : chalk.hex(options.palette.error.text);
+			}
+
+			if (typeof options.palette.debug !== "undefined" && options.palette.debug !== null) {
+				Types.DEBUG.bgcolor = (typeof options.palette.debug.background === "undefined" || options.palette.debug.background === null) ? Types.DEBUG.bgcolor : chalk.bgHex(options.palette.debug.background).hex(options.palette.debug.label);
+				Types.DEBUG.color = (typeof options.palette.debug.text === "undefined" || options.palette.debug.text === null) ? Types.DEBUG.color : chalk.hex(options.palette.debug.text);
+			}
+
+			if (typeof options.palette.docs !== "undefined" && options.palette.docs !== null) {
+				Types.DOCS.bgcolor = (typeof options.palette.docs.background === "undefined" || options.palette.docs.background === null) ? Types.DOCS.bgcolor : chalk.bgHex(options.palette.docs.background).hex(options.palette.docs.label);
+				Types.DOCS.color = (typeof options.palette.docs.text === "undefined" || options.palette.docs.text === null) ? Types.DOCS.color : chalk.hex(options.palette.docs.text);
+			}
+
+			if (typeof options.palette.stackoverflow !== "undefined" && options.palette.stackoverflow !== null) {
+				Types.STACKOVERFLOW.bgcolor = (typeof options.palette.stackoverflow.background === "undefined" || options.palette.stackoverflow.background === null) ? Types.STACKOVERFLOW.bgcolor : chalk.bgHex(options.palette.stackoverflow.background).hex(options.palette.stackoverflow.label);
+				Types.STACKOVERFLOW.color = (typeof options.palette.stackoverflow.text === "undefined" || options.palette.stackoverflow.text === null) ? Types.STACKOVERFLOW.color : chalk.hex(options.palette.stackoverflow.text);
+			}
+
+			if (typeof options.palette.sponsor !== "undefined" && options.palette.sponsor !== null) {
+				Types.SPONSOR.bgcolor = (typeof options.palette.sponsor.background === "undefined" || options.palette.sponsor.background === null) ? Types.SPONSOR.bgcolor : chalk.bgHex(options.palette.sponsor.background).hex(options.palette.sponsor.label);
+				Types.SPONSOR.color = (typeof options.palette.sponsor.text === "undefined" || options.palette.sponsor.text === null) ? Types.SPONSOR.color : chalk.hex(options.palette.sponsor.text);
+			}
+
+			if (typeof options.palette.time !== "undefined" && options.palette.time !== null) {
+				Types.TIME.bgcolor = (typeof options.palette.time.background === "undefined" || options.palette.time.background === null) ? Types.TIME.bgcolor : chalk.bgHex(options.palette.time.background).hex(options.palette.time.label);
+				Types.TIME.color = (typeof options.palette.time.text === "undefined" || options.palette.time.text === null) ? Types.TIME.color : chalk.hex(options.palette.time.text);
+			}
 		}
 
 		if (typeof options.colors === "undefined" || options.colors === null) {
@@ -76,7 +122,34 @@ class Log {
 			}
 		}
 
+		if (typeof options.rotate === "undefined" || options.rotate === null) {
+			options.rotate = {
+				size: "10M",
+				encoding: "utf8"
+			};
+		}
+
 		this.config = options;
+
+		if (this.config.write === "enabled" || this.config.write === true) {
+			const pad = num => (num > 9 ? "" : "0") + num;
+			rfs.createStream((time, index) => {
+				if (!time) {
+					return this.config.path.debug_log;
+				}
+
+				return `${path.parse(this.config.path.debug_log).base.split(".")[0]}.${time.getFullYear()}${pad(time.getMonth() + 1)}${pad(time.getDate())}-${index}.${path.parse(this.config.path.debug_log).base.split(".")[1]}`;
+			}, this.config.rotate);
+
+			rfs.createStream((time, index) => {
+				if (!time) {
+					return this.config.path.error_log;
+				}
+
+				return `${path.parse(this.config.path.error_log).base.split(".")[0]}.${time.getFullYear()}${pad(time.getMonth() + 1)}${pad(time.getDate())}-${index}.${path.parse(this.config.path.error_log).base.split(".")[1]}`;
+			}, this.config.rotate);
+
+		}
 		this.TYPES_LOG = Types;
 	}
 
@@ -90,7 +163,7 @@ class Log {
 	 * @return {string} time - current Date.now()
 	 *
 	 */
-	current_time(format = "string") {
+	currentTime(format = "string") {
 		let tz_offset = (new Date()).getTimezoneOffset() * 60000;
 
 		if (format === "json") {
@@ -114,13 +187,13 @@ class Log {
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
 	 */
-	append_file(type = "INFO", tag = "", message = "") {
+	appendFile(type = "INFO", tag = "", message = "") {
 		if (this.config.write === "enabled" || this.config.write === true) {
 			if (this.config.type === "log") {
 				if (tag !== "") {
 					tag = `${tag}: `;
 				}
-				let log_text = `[${this.current_time()}] [${type.id}] ${tag}${message}\n`;
+				let log_text = `[${this.currentTime()}] [${type.id}] ${tag}${message}\n`;
 
 				fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
 					if (err) {
@@ -136,6 +209,7 @@ class Log {
 					});
 				}
 			} else {
+
 				const debug_adapter = new FileSync(this.config.path.debug_log);
 				const debug_db = lowdb(debug_adapter);
 				const error_adapter = new FileSync(this.config.path.error_log);
@@ -163,10 +237,10 @@ class Log {
 				debug_db.defaults({logs: []}).write();
 				error_db.defaults({logs: []}).write();
 
-				debug_db.get("logs").push({level: level, time: this.current_time("timestamp"), date: this.current_time("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
+				debug_db.get("logs").push({level: level, time: this.currentTime("timestamp"), date: this.currentTime("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
 
 				if (type.id === "ERROR") {
-					error_db.get("logs").push({level: level, time: this.current_time("timestamp"), date: this.current_time("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
+					error_db.get("logs").push({level: level, time: this.currentTime("timestamp"), date: this.currentTime("json"), msg: ansi(message), tag: ansi(tag), v: 1}).write();
 				}
 			}
 		}
@@ -188,9 +262,9 @@ class Log {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
+			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
 		} else {
-			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
+			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
 		}
 	}
 
@@ -210,9 +284,9 @@ class Log {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
+			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
 		} else {
-			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.current_time()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
+			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
 		}
 	}
 
@@ -228,7 +302,7 @@ class Log {
 	info(message = "", tag = "") {
 		if (this.config.info === "enabled" || this.config.info === true) {
 			this.log(this.TYPES_LOG.INFO, tag, `${message}`);
-			this.append_file(this.TYPES_LOG.INFO, tag, message);
+			this.appendFile(this.TYPES_LOG.INFO, tag, message);
 		}
 	}
 
@@ -244,7 +318,7 @@ class Log {
 	warning(message = "", tag = "") {
 		if (this.config.warning === "enabled" || this.config.warning === true) {
 			this.log(this.TYPES_LOG.WARNING, tag, `${message}`);
-			this.append_file(this.TYPES_LOG.WARNING, tag, message);
+			this.appendFile(this.TYPES_LOG.WARNING, tag, message);
 		}
 	}
 
@@ -260,7 +334,7 @@ class Log {
 	error(message = "", tag = "") {
 		if (this.config.error === "enabled" || this.config.error === true) {
 			this.err(this.TYPES_LOG.ERROR, tag, `${message}`);
-			this.append_file(this.TYPES_LOG.ERROR, tag, message);
+			this.appendFile(this.TYPES_LOG.ERROR, tag, message);
 		}
 	}
 
@@ -276,7 +350,7 @@ class Log {
 	debug(message = "", tag = "") {
 		if (this.config.debug === "enabled" || this.config.debug === true) {
 			this.log(this.TYPES_LOG.DEBUG, tag, `${message}`);
-			this.append_file(this.TYPES_LOG.DEBUG, tag, message);
+			this.appendFile(this.TYPES_LOG.DEBUG, tag, message);
 		}
 	}
 
@@ -292,7 +366,7 @@ class Log {
 	 */
 	docs(message = "", url = "", tag = "") {
 		this.log(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
-		this.append_file(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
+		this.appendFile(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
 	}
 
 	/**
@@ -312,7 +386,7 @@ class Log {
 
 		let url = `https://stackoverflow.com/search?q=${encodeURI(error_message)}`;
 		this.log(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
-		this.append_file(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
+		this.appendFile(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
 	}
 
 	/**
@@ -326,7 +400,7 @@ class Log {
 	 */
 	sponsor(message = "", tag = "") {
 		this.log(this.TYPES_LOG.SPONSOR, tag, message);
-		this.append_file(this.TYPES_LOG.SPONSOR, tag, message);
+		this.appendFile(this.TYPES_LOG.SPONSOR, tag, message);
 	}
 }
 

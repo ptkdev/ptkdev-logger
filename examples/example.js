@@ -19,9 +19,54 @@ const options = {
 	"sponsor": true, // enable/disable all logs with method sponsor (optional, default enabled - values: true|enabled or false|disabled)
 	"write": true,   // write the logs into a file, you need set path values (optional, default disabled - values: true|enabled or false|disabled)
 	"type": "log",   // format of logs in files (optional, default log - values: log|json)
+	"rotate": {
+		size: "10M",  // Rotates the file when size exceeds 10 megabytes (optional, default 10M - values: 10B (byte) / 10K (kilobyte)/ 10M (megabyte)/ 10G (gigabyte))
+		encoding: "utf8"
+	},
 	"path": {        // if write is true, the library writes the logs to a path
 		"debug_log": "./debug.log",  // all logs
 		"error_log": "./errors.log", // only errors logs
+	},
+	"palette": {
+		"info": {
+			"label": "#ffffff", // label on left
+			"text": "#4CAF50",  // log message
+			"background": "#4CAF50" // background
+		},
+		"warning": {
+			"label": "#ffffff",
+			"text": "#FF9800",
+			"background": "#FF9800"
+		},
+		"error": {
+			"label": "#ffffff",
+			"text": "#FF5252",
+			"background": "#FF5252"
+		},
+		"stackoverflow": {
+			"label": "#ffffff",
+			"text": "#9C27B0",
+			"background": "#9C27B0"
+		},
+		"docs": {
+			"label": "#ffffff",
+			"text": "#FF4081",
+			"background": "#FF4081"
+		},
+		"debug": {
+			"label": "#ffffff",
+			"text": "#1976D2",
+			"background": "#1976D2"
+		},
+		"sponsor": {
+			"label": "#ffffff",
+			"text": "#607D8B",
+			"background": "#607D8B"
+		},
+		"time": {
+			"label": "#ffffff",
+			"background": "#795548"
+		}
 	}
 };
 
