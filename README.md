@@ -117,7 +117,7 @@ You can customize palette colors with Object `palette` and with hexcode values.
 - `text` is message of log on right
 - `background` is background color on left side
 
-```json
+```javascript
 {
 	...
 	"palette": {
