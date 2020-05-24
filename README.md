@@ -171,7 +171,7 @@ See folder `examples`, run with `node example.js`.
 
 Rotates the file when size exceeds 10 megabytes (optional, default 10M - values: 10B (byte) / 10K (kilobyte)/ 10M (megabyte)/ 10G (gigabyte))
 
-```json
+```javascript
 ...
 "rotate": {
 	"size": "10M",
