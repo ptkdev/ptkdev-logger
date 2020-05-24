@@ -30,8 +30,8 @@ const options = {
 	"palette": {
 		"info": {
 			"label": "#ffffff", // label on left
-			"text": "#4CAF50",  // log message
-			"background": "#4CAF50" // background
+			"text": "#2ECC71",  // log message
+			"background": "#2ECC71" // background
 		},
 		"warning": {
 			"label": "#ffffff",

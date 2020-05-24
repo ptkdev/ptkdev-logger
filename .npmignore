@@ -8,8 +8,7 @@ databases/
 tests/
 docs/
 logs/
-examples/*.log
-examples/*.json
+examples/
 docker/
 Dockerfile
 Dockerfile.*
@@ -22,3 +21,4 @@ loginpin.txt
 .pm2-process.json
 .all-contributorsrc
 .eslintcache
+.jsconfig.js
