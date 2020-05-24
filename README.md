@@ -2,7 +2,7 @@
 
 # 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.5.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.6.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -21,6 +21,7 @@
 - - 🧰 [Options](#-options)
 - - 🔌 [Methods](#-methods)
 - - 🎨 [Palette](#-palette)
+- - 🤹‍♂️ [LogRotate](#-logrotate)
 - 👨‍💻 [Contributing](#-contributing)
 - 🐛 [Known Bugs](https://github.com/ptkdev/ptkdev-logger/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 - 🍻 Community:
@@ -30,7 +31,7 @@
 * [✔️] Easy to use
 * [✔️] MIT License
 * [✔️] Palette (🎨 Customize colors)
-* [✔️] Logrotate
+* [✔️] Logrotate 🤹‍♂️
 * [✔️] The best alternative to the console.log statement
 * [✔️] Write stdout logs to file (supported format: text/log and json)
 * [✔️] The JSON logs format is compatible with [pinojs](https://github.com/pinojs/pino)
@@ -66,7 +67,7 @@ const options = {
 		"size": "10M",
 		"encoding": "utf8"
 	},
-	"path": { // remember: add logs folder or files to .gitignore
+	"path": { // remember: add string *.log to .gitignore
 		"debug_log": "./debug.log",
 		"error_log": "./errors.log",
 	}
@@ -92,7 +93,7 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 | write | Write the logs into a file, you need set path values | true / enabled / false / disabled | false | **v1.0.0** |
 | type | Format of logs in files | log / json | log | **v1.0.0** |
 | rotate | Rotates the log files when size exceeds this value | `10B` / `10K` / `10M` / `10G` | `"rotate": {"size": "10M"}` | **v1.5.0** |
-| palette | Change palette with hexcode colors |  `{ "palette": { "info": { "label": "#ffffff", "text": "#4CAF50", "background": "#4CAF50" } }` | default palette | **v1.5.0** |
+| palette | Change palette with hexcode colors | [Object](#-palette) | default palette | **v1.5.0** |
 | path | If write is true, the library writes the logs to a path | Object | `{"debug_log": "./debug.log", "error_log": "./errors.log"}` | **v1.0.0** |
 
 ## 🔌 Methods
@@ -111,12 +112,73 @@ See folder `examples`, run with `node example.js`. Below is available a descript
 
 [![Beautiful Logger for Node.js](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-palette.png)](https://raw.githubusercontent.com/ptkdev/ptkdev-logger/nightly/.github/assets/screenshot/ptkdev-logger-palette.png)
 
-You can customize palette colors with `options.palette` with hexcode values.
+You can customize palette colors with Object `palette` and with hexcode values.
 - `label` is text on left (INFORMATION / ERROR / DOCS, etc..)
 - `text` is message of log on right
 - `background` is background color on left side
 
+```json
+{
+	...
+	"palette": {
+		"info": { // method name
+			"label": "#ffffff", // label on left
+			"text": "#4CAF50",  // log message
+			"background": "#4CAF50" // background
+		},
+		"warning": {
+			"label": "#ffffff",
+			"text": "#FF9800",
+			"background": "#FF9800"
+		},
+		"error": {
+			"label": "#ffffff",
+			"text": "#FF5252",
+			"background": "#FF5252"
+		},
+		"stackoverflow": {
+			"label": "#ffffff",
+			"text": "#9C27B0",
+			"background": "#9C27B0"
+		},
+		"docs": {
+			"label": "#ffffff",
+			"text": "#FF4081",
+			"background": "#FF4081"
+		},
+		"debug": {
+			"label": "#ffffff",
+			"text": "#1976D2",
+			"background": "#1976D2"
+		},
+		"sponsor": {
+			"label": "#ffffff",
+			"text": "#607D8B",
+			"background": "#607D8B"
+		},
+		"time": {
+			"label": "#ffffff",
+			"background": "#795548"
+		}
+	}
+	...
+}
+```
+
 See folder `examples`, run with `node example.js`.
+
+## 🤹‍♂️ LogRotate
+
+Rotates the file when size exceeds 10 megabytes (optional, default 10M - values: 10B (byte) / 10K (kilobyte)/ 10M (megabyte)/ 10G (gigabyte))
+
+```json
+...
+"rotate": {
+	"size": "10M",
+	"encoding": "utf8"
+},
+...
+```
 
 ## 📚 Documentation
 Run `npm run docs`

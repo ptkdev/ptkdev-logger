@@ -365,8 +365,10 @@ class Log {
 	 *
 	 */
 	docs(message = "", url = "", tag = "") {
-		this.log(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
-		this.appendFile(this.TYPES_LOG.DOCS, tag, `${message} - ${chalk.rgb(236, 135, 191).underline.italic(url)}`);
+		let docs = this.TYPES_LOG.DOCS;
+
+		this.log(this.TYPES_LOG.DOCS, tag, `${message} - ${docs.color.underline.italic(url)}`);
+		this.appendFile(this.TYPES_LOG.DOCS, tag, `${message} - ${docs.color.underline.italic(url)}`);
 	}
 
 	/**
@@ -384,9 +386,11 @@ class Log {
 			error_message = message;
 		}
 
+		let stackoverflow = this.TYPES_LOG.STACKOVERFLOW;
+
 		let url = `https://stackoverflow.com/search?q=${encodeURI(error_message)}`;
-		this.log(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
-		this.appendFile(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${chalk.rgb(41, 128, 185).underline.italic(url)}`);
+		this.log(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${stackoverflow.color.underline.italic(url)}`);
+		this.appendFile(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${stackoverflow.color.underline.italic(url)}`);
 	}
 
 	/**
