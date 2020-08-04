@@ -57,7 +57,15 @@
       "contributions": [
         "translation"
       ]
-    }
+    },
+	{
+		"login": "GiovanniCardamone",
+		"name": "Giovanni Cardamone",
+		"avatar_url": "https://avatars.githubusercontent.com/giovannicardamone",
+		"contributions": [
+			"typization"
+		]
+	}
   ],
   "contributorsPerLine": 6,
   "commitConvention": "none"
