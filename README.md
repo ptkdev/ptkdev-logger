@@ -2,7 +2,7 @@
 
 # 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.6.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.7.0-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -203,11 +203,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://ptk.dev"><img src="https://avatars1.githubusercontent.com/u/442844?v=4" width="100px;" alt=""/><br /><sub><b>Patryk Rzucidło</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=ptkdev" title="Code">💻</a> <a href="#translation-ptkdev" title="Translation">🌍</a> <a href="https://github.com/ptkdev/ptkdev-logger/commits?author=ptkdev" title="Documentation">📖</a> <a href="https://github.com/ptkdev/ptkdev-logger/issues?q=author%3Aptkdev" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/agoalofalife"><img src="https://avatars1.githubusercontent.com/u/15719824?v=4" width="100px;" alt=""/><br /><sub><b>Ilua Chubarov</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=agoalofalife" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Bruck1701"><img src="https://avatars2.githubusercontent.com/u/17711277?v=4" width="100px;" alt=""/><br /><sub><b>Bruno Kümmel</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=Bruck1701" title="Code">💻</a> <a href="#translation-Bruck1701" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/alinaosv"><img src="https://avatars3.githubusercontent.com/u/60554247?v=4" width="100px;" alt=""/><br /><sub><b>Alina Osv</b></sub></a><br /><a href="#translation-alinaosv" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/Syltech"><img src="https://avatars1.githubusercontent.com/u/3882925?v=4" width="100px;" alt=""/><br /><sub><b>Sylvain Téchené</b></sub></a><br /><a href="#translation-Syltech" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://ptk.dev"><img src="https://avatars1.githubusercontent.com/u/442844?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Patryk Rzucidło</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=ptkdev" title="Code">💻</a> <a href="#translation-ptkdev" title="Translation">🌍</a> <a href="https://github.com/ptkdev/ptkdev-logger/commits?author=ptkdev" title="Documentation">📖</a> <a href="https://github.com/ptkdev/ptkdev-logger/issues?q=author%3Aptkdev" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/agoalofalife"><img src="https://avatars1.githubusercontent.com/u/15719824?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilua Chubarov</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=agoalofalife" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Bruck1701"><img src="https://avatars2.githubusercontent.com/u/17711277?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bruno Kümmel</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=Bruck1701" title="Code">💻</a> <a href="#translation-Bruck1701" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/alinaosv"><img src="https://avatars3.githubusercontent.com/u/60554247?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alina Osv</b></sub></a><br /><a href="#translation-alinaosv" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/Syltech"><img src="https://avatars1.githubusercontent.com/u/3882925?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sylvain Téchené</b></sub></a><br /><a href="#translation-Syltech" title="Translation">🌍</a></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/giovannicardamone?s=100" width="100px;" alt=""/><br /><sub><b>Giovanni Cardamone</b></sub><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=GiovanniCardamone" title="Code">💻</a></td>
   </tr>
 </table>
 

@@ -10,5 +10,5 @@
 		"noEmit": true,
 		"forceConsistentCasingInFileNames": true
 	},
-	"files": ["index.d.ts"]
+	"files": ["modules/logger.d.ts"]
 }
