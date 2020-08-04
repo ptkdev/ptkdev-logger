@@ -1,7 +1,7 @@
 {
 	"name": "@ptkdev/logger",
 	"description": "Beautiful Logger for Node.js: the best alternative to the console.log statement",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"main": "modules/logger.js",
 	"author": "Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)",
 	"license": "MIT",
@@ -76,6 +76,7 @@
 		"Ilua Chubarov [@Ilya] <agoalofalife@gmail.com> (https://github.com/agoalofalife)",
 		"Bruno Kummel [@Bruck1701] <kummel@gmail.com> (https://github.com/Bruck1701)",
 		"Alina Osv [@alinaosv] <hixid@ya.ru> (https://github.com/alinaosv)",
-		"Sylvain Téchené [@syltech] <contact@syltech.fr> (https://github.com/Syltech)"
+		"Sylvain Téchené [@syltech] <contact@syltech.fr> (https://github.com/Syltech)",
+		"Giovanni Cardamone [@GiovanniCardamone] <g.cardamone2@gmail.com> (https://github.com/GiovanniCardamone)"
 	]
 }

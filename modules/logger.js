@@ -16,14 +16,14 @@ const rfs = require("rotating-file-stream");
 const lowdb = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const languages = {
+	de: require("../translations/de"),
 	en: require("../translations/en"),
+	es: require("../translations/es"),
+	fr: require("../translations/fr"),
 	it: require("../translations/it"),
 	pl: require("../translations/pl"),
 	pt: require("../translations/pt"),
-	es: require("../translations/es"),
-	de: require("../translations/de"),
-	ru: require("../translations/ru"),
-	fr: require("../translations/fr")
+	ru: require("../translations/ru")
 };
 const logger = console;
 let Types = require("./types");
@@ -159,7 +159,7 @@ class Log {
 	 * Current (now) date and time for prefix of logs. Timezone is supported.
 	 *
 	 * @param {string} format - format of date: json, timestamp or string (optional, deafult: string)
-	 *
+
 	 * @return {string} time - current Date.now()
 	 *
 	 */
@@ -179,13 +179,14 @@ class Log {
 	}
 
 	/**
-	 * Output of console log to file
+	 * Write the output of console.log() to file
 	 * =====================
-	 * Write in debug.log and error.log in /logs folder
+	 * Write messages to debug.log and error.log in /logs folder
 	 *
 	 * @param {string} type - example: INFO/WARNING/ERROR/DEBUG or other valid type string (see ./types.js) (mandatory)
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
+	 *
 	 */
 	appendFile(type = "INFO", tag = "", message = "") {
 		if (this.config.write === "enabled" || this.config.write === true) {
@@ -249,14 +250,14 @@ class Log {
 	/**
 	 * Write to stdout
 	 * =====================
-	 * Log manager - don't use this directly. Use info() error() debug() warning()
+	 * Stdout manager - don't use this directly. Use info() error() debug() warning()
 	 *
 	 * @param {string} type - example: INFO/WARNING/ERROR/DEBUG or other valid type string (see ./types.js) (mandatory)
 	 * @param {string} tag - func unique tag (optional)
 	 * @param {string} message - error, warning or info description (mandatory)
 	 *
 	 */
-	log(type = "INFO", tag = "", message = "") {
+	stdout(type = "INFO", tag = "", message = "") {
 		let time = this.TYPES_LOG.TIME;
 		if (tag !== "") {
 			tag = ` ${tag}:`;
@@ -271,14 +272,14 @@ class Log {
 	/**
 	 * Write to stderr
 	 * =====================
-	 * Log manager - don't use this directly. Use info() error() debug() warning()
+	 * Stderr manager - don't use this directly. Use info() error() debug() warning()
 	 *
 	 * @param {string} type - example: INFO/WARNING/ERROR/DEBUG or other valid type string (see ./types.js) (mandatory)
 	 * @param {string} tag - func unique tag (optional)
 	 * @param {string} message - error, warning or info description (mandatory)
 	 *
 	 */
-	err(type = "ERROR", tag = "", message = "") {
+	stderr(type = "ERROR", tag = "", message = "") {
 		let time = this.TYPES_LOG.TIME;
 		if (tag !== "") {
 			tag = ` ${tag}:`;
@@ -291,9 +292,9 @@ class Log {
 	}
 
 	/**
-	 * Output of console log: type info
+	 * Logging of the info message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
@@ -301,15 +302,15 @@ class Log {
 	 */
 	info(message = "", tag = "") {
 		if (this.config.info === "enabled" || this.config.info === true) {
-			this.log(this.TYPES_LOG.INFO, tag, `${message}`);
+			this.stdout(this.TYPES_LOG.INFO, tag, `${message}`);
 			this.appendFile(this.TYPES_LOG.INFO, tag, message);
 		}
 	}
 
 	/**
-	 * Output of console log: type warning
+	 * Logging of the warning message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
@@ -317,15 +318,15 @@ class Log {
 	 */
 	warning(message = "", tag = "") {
 		if (this.config.warning === "enabled" || this.config.warning === true) {
-			this.log(this.TYPES_LOG.WARNING, tag, `${message}`);
+			this.stdout(this.TYPES_LOG.WARNING, tag, `${message}`);
 			this.appendFile(this.TYPES_LOG.WARNING, tag, message);
 		}
 	}
 
 	/**
-	 * Output of console log: type error
+	 * Logging of the error message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
@@ -333,15 +334,15 @@ class Log {
 	 */
 	error(message = "", tag = "") {
 		if (this.config.error === "enabled" || this.config.error === true) {
-			this.err(this.TYPES_LOG.ERROR, tag, `${message}`);
+			this.stderr(this.TYPES_LOG.ERROR, tag, `${message}`);
 			this.appendFile(this.TYPES_LOG.ERROR, tag, message);
 		}
 	}
 
 	/**
-	 * Output of console log: type debug
+	 * Logging of the debug message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
@@ -349,15 +350,15 @@ class Log {
 	 */
 	debug(message = "", tag = "") {
 		if (this.config.debug === "enabled" || this.config.debug === true) {
-			this.log(this.TYPES_LOG.DEBUG, tag, `${message}`);
+			this.stdout(this.TYPES_LOG.DEBUG, tag, `${message}`);
 			this.appendFile(this.TYPES_LOG.DEBUG, tag, message);
 		}
 	}
 
 	/**
-	 * Output of console log: type docs
+	 * Logging of the docs message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
@@ -367,14 +368,14 @@ class Log {
 	docs(message = "", url = "", tag = "") {
 		let docs = this.TYPES_LOG.DOCS;
 
-		this.log(this.TYPES_LOG.DOCS, tag, `${message} - ${docs.color.underline.italic(url)}`);
+		this.stdout(this.TYPES_LOG.DOCS, tag, `${message} - ${docs.color.underline.italic(url)}`);
 		this.appendFile(this.TYPES_LOG.DOCS, tag, `${message} - ${docs.color.underline.italic(url)}`);
 	}
 
 	/**
-	 * Output of console log: type stackoverflow
+	 * Logging of the stackoverflow message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
@@ -389,21 +390,21 @@ class Log {
 		let stackoverflow = this.TYPES_LOG.STACKOVERFLOW;
 
 		let url = `https://stackoverflow.com/search?q=${encodeURI(error_message)}`;
-		this.log(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${stackoverflow.color.underline.italic(url)}`);
+		this.stdout(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${stackoverflow.color.underline.italic(url)}`);
 		this.appendFile(this.TYPES_LOG.STACKOVERFLOW, tag, `${message} - ${stackoverflow.color.underline.italic(url)}`);
 	}
 
 	/**
-	 * Output of console log: type sponsor
+	 * Logging of the sponsor message
 	 * =====================
-	 * Write log on console and file
+	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
 	sponsor(message = "", tag = "") {
-		this.log(this.TYPES_LOG.SPONSOR, tag, message);
+		this.stdout(this.TYPES_LOG.SPONSOR, tag, message);
 		this.appendFile(this.TYPES_LOG.SPONSOR, tag, message);
 	}
 }
