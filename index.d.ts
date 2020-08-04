@@ -1,6 +1,7 @@
 declare module "@ptkdev/logger" {
 	interface RotateType {
 		size: "10B" | "10K" | "10M" | "10G";
+		encoding: string;
 	}
 
 	interface PaletteElement {
