@@ -1,7 +1,11 @@
-# v1.7.1 (August 19, 2020)
-* Fix: Typescript typization issues (#7)
+# v1.7.2 (August 19, 2020)
+* Fix: Typescript export module
 
 [![](https://img.shields.io/badge/donate-paypal-005EA6.svg?logo=paypal)](https://www.paypal.me/ptkdev) [![](https://img.shields.io/badge/donate-patreon-F87668.svg?logo=patreon)](https://www.patreon.com/ptkdev) [![](https://img.shields.io/badge/donate-sponsors-ea4aaa.svg?logo=github)](https://github.com/sponsors/ptkdev/)  [![](https://img.shields.io/badge/donate-ko--fi-29abe0.svg?logo=ko-fi)](https://ko-fi.com/ptkdev)
+
+
+# v1.7.1 (August 19, 2020)
+* Fix: Typescript typization issues (#7)
 
 
 # v1.7.0 (August 05, 2020)

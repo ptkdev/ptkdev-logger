@@ -27,20 +27,19 @@ const languages = {
 };
 const logger = console;
 let Types = require("./types");
-
 class Log {
 	constructor(options = new Object) {
 		if (typeof options.language === "undefined" || options.language === null) {
 			options.language = "en";
-		} else {
-			Types.INFO.label = languages[options.language]["INFO"];
-			Types.WARNING.label = languages[options.language]["WARNING"];
-			Types.ERROR.label = languages[options.language]["ERROR"];
-			Types.DEBUG.label = languages[options.language]["DEBUG"];
-			Types.DOCS.label = languages[options.language]["DOCS"];
-			Types.STACKOVERFLOW.label = languages[options.language]["STACKOVERFLOW"];
-			Types.SPONSOR.label = languages[options.language]["SPONSOR"];
 		}
+
+		Types.INFO.label = languages[options.language]["INFO"];
+		Types.WARNING.label = languages[options.language]["WARNING"];
+		Types.ERROR.label = languages[options.language]["ERROR"];
+		Types.DEBUG.label = languages[options.language]["DEBUG"];
+		Types.DOCS.label = languages[options.language]["DOCS"];
+		Types.STACKOVERFLOW.label = languages[options.language]["STACKOVERFLOW"];
+		Types.SPONSOR.label = languages[options.language]["SPONSOR"];
 
 		if (typeof options.palette === "undefined" || options.palette === null) {
 			options.palette = null;
@@ -410,3 +409,4 @@ class Log {
 }
 
 module.exports = Log;
+module.exports.default = Log;
