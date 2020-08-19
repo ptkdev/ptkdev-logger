@@ -361,8 +361,8 @@ class Log {
 	 * This method show message on terminal and/or write message on file/json
 	 *
 	 * @param {string} message - description of issue (mandatory)
-	 * @param {string} tag - func unique tag (optional)
 	 * @param {string} url - url of documentation (optional)
+	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
 	docs(message = "", url = "", tag = "") {
