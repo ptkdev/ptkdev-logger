@@ -2,7 +2,7 @@
 
 # 🦒 Beautiful Logger for Node.js
 
-[![](https://img.shields.io/badge/version-v1.7.2-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
+[![](https://img.shields.io/badge/version-v1.7.3--nightly.20200819-lightgrey.svg)](https://github.com/ptkdev/ptkdev-logger/releases) [![](https://img.shields.io/npm/v/@ptkdev/logger.svg)](https://www.npmjs.com/package/@ptkdev/logger) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/ptkdev/ptkdev-logger/blob/master/LICENSE.md) [![](https://img.shields.io/badge/ES-9-F7DF1E.svg)](https://wikipedia.org/wiki/ECMAScript) [![](https://snyk.io/test/github/ptkdev/ptkdev-logger/badge.svg)](https://snyk.io/test/github/ptkdev/ptkdev-logger) [![](https://discordapp.com/api/guilds/383373985666301975/embed.png)](http://discord.ptkdev.io)
 
 > The best alternative to the console.log statement
 
@@ -30,9 +30,10 @@
 ## 💡 Features
 * [✔️] Easy to use
 * [✔️] MIT License
+* [✔️] Linux / Mac OSX / Windows 10 (Powershell)
 * [✔️] Palette (🎨 Customize colors)
 * [✔️] Logrotate 🤹‍♂️
-* [✔️] Typescript support
+* [✔️] Typescript typization supported
 * [✔️] The best alternative to the console.log statement
 * [✔️] Write stdout logs to file (supported format: text/log and json)
 * [✔️] The JSON logs format is compatible with [pinojs](https://github.com/pinojs/pino)

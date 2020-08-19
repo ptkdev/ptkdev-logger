@@ -125,3 +125,4 @@ config/*.js
 configs/*.js
 loginpin.txt
 configs/loginpin.txt
+examples/example-typescript.js

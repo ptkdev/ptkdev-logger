@@ -1,5 +1,5 @@
 /**
- * Logger: example
+ * Logger: example with typescript lang
  * =====================
  *
  * @contributors: Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)
@@ -7,7 +7,7 @@
  * @license: MIT License
  *
  */
-const Logger = require("./../modules/logger"); // in your project use: require("@ptkdev/logger");
+import Logger from "./../modules/logger";
 const logger = new Logger();
 
 logger.info("your info message", "your tag");
