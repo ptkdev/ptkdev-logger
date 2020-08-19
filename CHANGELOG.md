@@ -1,8 +1,11 @@
-# v1.7.0 (August 05, 2020)
-* Feature: typescript typization (Thanks: Giovanni Cardamone)
+# v1.7.1 (August 19, 2020)
+* Fix: Typescript typization issues (#7)
 
 [![](https://img.shields.io/badge/donate-paypal-005EA6.svg?logo=paypal)](https://www.paypal.me/ptkdev) [![](https://img.shields.io/badge/donate-patreon-F87668.svg?logo=patreon)](https://www.patreon.com/ptkdev) [![](https://img.shields.io/badge/donate-sponsors-ea4aaa.svg?logo=github)](https://github.com/sponsors/ptkdev/)  [![](https://img.shields.io/badge/donate-ko--fi-29abe0.svg?logo=ko-fi)](https://ko-fi.com/ptkdev)
 
+
+# v1.7.0 (August 05, 2020)
+* Feature: typescript typization (Thanks: Giovanni Cardamone)
 
 # v1.6.0 (May 24, 2020)
 * Fix: info color (default palette) changed from #2ECC71 to #4CAF50

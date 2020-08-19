@@ -44,16 +44,88 @@ declare module "@ptkdev/logger" {
 	export default class Logger {
 		constructor(options?: LoggerOptions);
 
-		debug?(message: string, tag?: string): void;
-		info?(message: string, tag?: string): void;
-		warning?(message: string, tag?: string): void;
-		error?(message: string, tag?: string): void;
-		sponsor?(message: string, tag?: string): void;
-		stackoverflow?(
+		/**
+		 * Logging of the debug message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} tag - func unique tag (optional)
+		 *
+		 */
+		debug(message: string, tag?: string): void;
+
+		/**
+		 * Logging of the info message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} tag - func unique tag (optional)
+		 *
+		 */
+		info(message: string, tag?: string): void;
+
+		/**
+		 * Logging of the warning message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} tag - func unique tag (optional)
+		 *
+		 */
+		warning(message: string, tag?: string): void;
+
+		/**
+		 * Logging of the error message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} tag - func unique tag (optional)
+		 *
+		 */
+		error(message: string, tag?: string): void;
+
+		/**
+		 * Logging of the sponsor message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} tag - func unique tag (optional)
+		 *
+		 */
+		sponsor(message: string, tag?: string): void;
+
+		/**
+		 * Logging of the stackoverflow message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} tag - func unique tag (optional)
+		 * @param {string} error_message - error message to stackoverflow (optional)
+		 *
+		 */
+		stackoverflow(
 			message: string,
 			tag?: string,
-			error_string?: string
+			error_message?: string
 		): void;
-		docs?(message: string, url?: string, tag?: string): void;
+
+		/**
+		 * Logging of the docs message
+		 * =====================
+		 * This method show message on terminal and/or write message on file/json
+		 *
+		 * @param {string} message - description of issue (mandatory)
+		 * @param {string} url - url of documentation (optional)
+		 * @param {string} tag - func unique tag (optional)
+		 *
+		 *
+		 */
+		docs(message: string, url?: string, tag?: string): void;
 	}
 }
