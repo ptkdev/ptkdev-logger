@@ -26,10 +26,21 @@ const languages = {
 	ru: require("../translations/ru")
 };
 const logger = console;
+const COLORS = {
+	info: "INFO",
+	warning: "WARNING",
+	error: "ERROR",
+	docs: "DOCS",
+	stackoverflow: "STACKOVERFLOW",
+	debug: "DEBUG",
+	sponsor: "SPONSOR",
+	time: "TIME"
+};
 let Types = require("./types");
+
 class Log {
 	constructor(options = new Object) {
-		if (typeof options.language === "undefined" || options.language === null) {
+		if (isFalsy(options.language)) {
 			options.language = "en";
 		}
 
@@ -41,87 +52,21 @@ class Log {
 		Types.STACKOVERFLOW.label = languages[options.language]["STACKOVERFLOW"];
 		Types.SPONSOR.label = languages[options.language]["SPONSOR"];
 
-		if (typeof options.palette === "undefined" || options.palette === null) {
-			options.palette = null;
-		} else {
-			if (typeof options.palette.info !== "undefined" && options.palette.info !== null) {
-				Types.INFO.bgcolor = (typeof options.palette.info.background === "undefined" || options.palette.info.background === null) ? Types.INFO.bgcolor : chalk.bgHex(options.palette.info.background).hex(options.palette.info.label);
-				Types.INFO.color = (typeof options.palette.info.text === "undefined" || options.palette.info.text === null) ? Types.INFO.color : chalk.hex(options.palette.info.text);
-			}
+		setupCustomPaletteColors(options);
 
-			if (typeof options.palette.warning !== "undefined" && options.palette.warning !== null) {
-				Types.WARNING.bgcolor = (typeof options.palette.warning.background === "undefined" || options.palette.warning.background === null) ? Types.WARNING.bgcolor : chalk.bgHex(options.palette.warning.background).hex(options.palette.warning.label);
-				Types.WARNING.color = (typeof options.palette.warning.text === "undefined" || options.palette.warning.text === null) ? Types.WARNING.color : chalk.hex(options.palette.warning.text);
-			}
+		options.colors = isTruthy(options.colors);
+		options.debug = isTruthy(options.debug);
+		options.info = isTruthy(options.info);
+		options.warning = isTruthy(options.warning);
+		options.error = isTruthy(options.error);
 
-			if (typeof options.palette.error !== "undefined" && options.palette.error !== null) {
-				Types.ERROR.bgcolor = (typeof options.palette.error.background === "undefined" || options.palette.error.background === null) ? Types.ERROR.bgcolor : chalk.bgHex(options.palette.error.background).hex(options.palette.error.label);
-				Types.ERROR.color = (typeof options.palette.error.text === "undefined" || options.palette.error.text === null) ? Types.ERROR.color : chalk.hex(options.palette.error.text);
-			}
-
-			if (typeof options.palette.debug !== "undefined" && options.palette.debug !== null) {
-				Types.DEBUG.bgcolor = (typeof options.palette.debug.background === "undefined" || options.palette.debug.background === null) ? Types.DEBUG.bgcolor : chalk.bgHex(options.palette.debug.background).hex(options.palette.debug.label);
-				Types.DEBUG.color = (typeof options.palette.debug.text === "undefined" || options.palette.debug.text === null) ? Types.DEBUG.color : chalk.hex(options.palette.debug.text);
-			}
-
-			if (typeof options.palette.docs !== "undefined" && options.palette.docs !== null) {
-				Types.DOCS.bgcolor = (typeof options.palette.docs.background === "undefined" || options.palette.docs.background === null) ? Types.DOCS.bgcolor : chalk.bgHex(options.palette.docs.background).hex(options.palette.docs.label);
-				Types.DOCS.color = (typeof options.palette.docs.text === "undefined" || options.palette.docs.text === null) ? Types.DOCS.color : chalk.hex(options.palette.docs.text);
-			}
-
-			if (typeof options.palette.stackoverflow !== "undefined" && options.palette.stackoverflow !== null) {
-				Types.STACKOVERFLOW.bgcolor = (typeof options.palette.stackoverflow.background === "undefined" || options.palette.stackoverflow.background === null) ? Types.STACKOVERFLOW.bgcolor : chalk.bgHex(options.palette.stackoverflow.background).hex(options.palette.stackoverflow.label);
-				Types.STACKOVERFLOW.color = (typeof options.palette.stackoverflow.text === "undefined" || options.palette.stackoverflow.text === null) ? Types.STACKOVERFLOW.color : chalk.hex(options.palette.stackoverflow.text);
-			}
-
-			if (typeof options.palette.sponsor !== "undefined" && options.palette.sponsor !== null) {
-				Types.SPONSOR.bgcolor = (typeof options.palette.sponsor.background === "undefined" || options.palette.sponsor.background === null) ? Types.SPONSOR.bgcolor : chalk.bgHex(options.palette.sponsor.background).hex(options.palette.sponsor.label);
-				Types.SPONSOR.color = (typeof options.palette.sponsor.text === "undefined" || options.palette.sponsor.text === null) ? Types.SPONSOR.color : chalk.hex(options.palette.sponsor.text);
-			}
-
-			if (typeof options.palette.time !== "undefined" && options.palette.time !== null) {
-				Types.TIME.bgcolor = (typeof options.palette.time.background === "undefined" || options.palette.time.background === null) ? Types.TIME.bgcolor : chalk.bgHex(options.palette.time.background).hex(options.palette.time.label);
-				Types.TIME.color = (typeof options.palette.time.text === "undefined" || options.palette.time.text === null) ? Types.TIME.color : chalk.hex(options.palette.time.text);
-			}
-		}
-
-		if (typeof options.colors === "undefined" || options.colors === null) {
-			options.colors = true;
-		}
-
-		if (typeof options.debug === "undefined" || options.debug === null) {
-			options.debug = true;
-		}
-
-		if (typeof options.info === "undefined" || options.info === null) {
-			options.info = true;
-		}
-
-		if (typeof options.warning === "undefined" || options.warning === null) {
-			options.warning = true;
-		}
-
-		if (typeof options.error === "undefined" || options.error === null) {
-			options.error = true;
-		}
-
-		if (typeof options.type === "undefined" || options.type === null) {
+		if (isTruthy(options.type)) {
 			options.type = "log";
 		}
 
-		if (typeof options.write === "undefined" || options.write === null) {
-			options.write = false;
-		} else if (typeof options.path === "undefined" || options.path === null) {
-			if (typeof options.debug_log === "undefined" || options.debug_log === null) {
-				options.debug_log = "./debug.log";
-			}
+		setupLogWritingOutput(options);
 
-			if (typeof options.error_log === "undefined" || options.error_log === null) {
-				options.error_log = "./errors.log";
-			}
-		}
-
-		if (typeof options.rotate === "undefined" || options.rotate === null) {
+		if (isFalsy(options.rotate)) {
 			options.rotate = {
 				size: "10M",
 				encoding: "utf8"
@@ -405,6 +350,64 @@ class Log {
 	sponsor(message = "", tag = "") {
 		this.stdout(this.TYPES_LOG.SPONSOR, tag, message);
 		this.appendFile(this.TYPES_LOG.SPONSOR, tag, message);
+	}
+}
+
+function isTruthy(property) {
+	return typeof property !== "undefined" && property !== null;
+}
+
+function isFalsy(property) {
+	return !property && property !== 0;
+}
+
+function bgColorOrDefault(customColor, defaultColor) {
+	return isFalsy(customColor.background)
+		? defaultColor
+		: chalk.bgHex(customColor.background).hex(customColor.label);
+}
+
+function colorOrDefault(customColor, defaultColor) {
+	return isFalsy(customColor.text)
+		? defaultColor
+		: chalk.hex(customColor.text);
+}
+
+/**
+ * Setups if the logs are going to be written in a file and the file path
+ * @param {*} options - the options
+ */
+function setupLogWritingOutput(options) {
+	if (isFalsy(options.write)) {
+		options.write = false;
+	} else if (isFalsy(options.path)) {
+		if (isFalsy(options.debug_log)) {
+			options.debug_log = "./debug.log";
+		}
+
+		if (isFalsy(options.error_log)) {
+			options.error_log = "./errors.log";
+		}
+	}
+}
+
+/**
+ * Setups all custom colors provided
+ * @param {*} options - the options
+ */
+function setupCustomPaletteColors(options) {
+	if (isFalsy(options.palette)) {
+		options.palette = null;
+	} else {
+		for (const property in options.palette) {
+			const type = COLORS[property];
+
+			if (COLORS[property]) {
+				Types[type].bgcolor = bgColorOrDefault(options.palette[property], Types[type].bgcolor);
+				Types[type].color = colorOrDefault(options.palette[property], Types[type].color);
+			}
+		}
+
 	}
 }
 

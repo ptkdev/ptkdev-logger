@@ -66,6 +66,15 @@
 			"contributions": [
 				"code"
 			]
+		},
+		{
+			"login": "leunardo",
+			"name": "Leonardo Alves",
+			"profile": "https://github.com/leunardo",
+			"avatar_url": "https://avatars1.githubusercontent.com/u/22580233?v=4",
+			"contributions": [
+				"code"
+			]
 		}
 	],
 	"contributorsPerLine": 6,
