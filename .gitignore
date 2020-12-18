@@ -126,3 +126,5 @@ configs/*.js
 loginpin.txt
 configs/loginpin.txt
 examples/example-typescript.js
+debug.json
+errors.json

@@ -1,7 +1,7 @@
 {
 	"name": "@ptkdev/logger",
 	"description": "Beautiful Logger for Node.js: the best alternative to the console.log statement",
-	"version": "1.7.3-nightly.20200819-1",
+	"version": "1.7.4",
 	"main": "modules/logger.js",
 	"author": "Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)",
 	"license": "MIT",
@@ -32,11 +32,12 @@
 		"npm-publish-nightly": "git checkout nightly && npm publish --tag nightly",
 		"docs": "git submodule update --recursive && markserv ./README.md",
 		"test": "jest",
-		"contributors-generate": "all-contributors generate"
+		"contributors-generate": "all-contributors generate",
+		"all-shields-cli": "all-shields-generate"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint && npm run contributors-generate"
+			"pre-commit": "npm run lint && npm run contributors-generate && npm run all-shields-cli"
 		}
 	},
 	"keywords": [

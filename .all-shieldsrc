@@ -1,0 +1,53 @@
+{
+	"files": [
+		"README.md",
+		"CHANGELOG.md"
+	],
+	"shields": [
+		{
+			"id": "header",
+			"badges": [
+				{
+					"url": "https://www.npmjs.com/package/@ptkdev/all-shields-cli",
+					"color": "lightgray",
+					"label": "package name",
+					"title": "package name",
+					"message": "{{name}}",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				}
+			]
+		},
+		{
+			"id": "donate",
+			"badges": [
+				{
+					"url": "https://www.npmjs.com/package/@ptkdev/all-shields-cli",
+					"color": "lightgray",
+					"label": "package name",
+					"title": "package name",
+					"message": "{{name}}",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				}
+			]
+		},
+		{
+			"id": "projects",
+			"badges": [
+				{
+					"url": "https://www.npmjs.com/package/@ptkdev/all-shields-cli",
+					"color": "lightgray",
+					"label": "package name",
+					"title": "package name",
+					"message": "{{name}}",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				}
+			]
+		}
+	]
+}

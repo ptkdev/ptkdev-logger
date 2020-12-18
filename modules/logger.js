@@ -27,7 +27,7 @@ const languages = {
 };
 const logger = console;
 let Types = require("./types");
-class Log {
+class Logger {
 	constructor(options = new Object) {
 		if (typeof options.language === "undefined" || options.language === null) {
 			options.language = "en";
@@ -408,5 +408,5 @@ class Log {
 	}
 }
 
-module.exports = Log;
-module.exports.default = Log;
+module.exports = Logger;
+module.exports.default = Logger;
