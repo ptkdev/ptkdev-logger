@@ -212,6 +212,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Syltech"><img src="https://avatars1.githubusercontent.com/u/3882925?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sylvain Téchené</b></sub></a><br /><a href="#translation-Syltech" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/giovannicardamone"><img src="https://avatars1.githubusercontent.com/u/5117748?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Giovanni Cardamone</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=GiovanniCardamone" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/leunardo"><img src="https://avatars1.githubusercontent.com/u/22580233?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leonardo Alves</b></sub></a><br /><a href="https://github.com/ptkdev/ptkdev-logger/commits?author=leunardo" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
