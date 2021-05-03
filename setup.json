@@ -1,0 +1,13 @@
+{
+	"package_name": "node-module-boilerplate",
+	"package_org": "@ptkdev",
+	"display_name": "Node NPM Library Boilerplate",
+	"description": "Create your npm library with this friendly boilerplate. Use this respository as template for your new node library/module",
+	"author": "Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)",
+	"author_markdown": "[Patryk Rzucidło](https://ptk.dev) ([@PTKDev](https://twitter.com/ptkdev)) <[support@ptkdev.io](mailto:support@ptkdev.io)>",
+	"author_url": "https://ptk.dev",
+	"github_nickname": "ptkdev",
+	"github_repository_url": "github.com/ptkdev-boilerplate",
+	"github_full_repository_url": "github.com/ptkdev-boilerplate/node-module-boilerplate",
+	"email": "support@ptkdev.io"
+}

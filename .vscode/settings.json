@@ -1,0 +1,80 @@
+{
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 30000,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"eslint.format.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "svelte"],
+	"eslint.options": {
+		"extensinons": [".ts", ".js", ".tsx", ".jsx", ".svelte"]
+	},
+	"todo-tree.highlights.customHighlight": {
+		"TODO": {
+			"foreground": "black",
+			"background": "#82AAFF",
+			"icon": "tag",
+			"iconColour": "#82AAFF",
+			"gutterIcon": true
+		},
+		"BUG": {
+			"foreground": "white",
+			"background": "#AC4142",
+			"icon": "bug",
+			"iconColour": "#AC4142",
+			"gutterIcon": true
+		},
+		"FIXME": {
+			"foreground": "black",
+			"background": "#FFCC00",
+			"iconColour": "#FFCC00",
+			"icon": "alert",
+			"gutterIcon": true
+		}
+	},
+	"todo-tree.highlights.defaultHighlight": {
+		"type": "text-and-comment"
+	},
+	"material-icon-theme.folders.associations": {
+		"wordpress": "wordpress",
+		"modules": "App",
+		"desktop": "Container",
+		"dist-desktop": "Dist",
+		"dist-client": "Dist",
+		"dist-mobile": "Dist",
+		"webcomponent": "Middleware",
+		"webcomponents": "Middleware",
+		"interfaces": "Include",
+		"interface": "Include",
+		"logger": "Log",
+		"mode": "Class",
+		"types": "Typescript",
+		"ISSUE_TEMPLATE": "Template"
+	}
+}

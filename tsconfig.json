@@ -1,14 +1,26 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
-		"lib": ["es6"],
+		"module": "CommonJS",
+		"target": "ES6",
+		"sourceMap": true,
+		"outDir": "./dist/",
+		"lib": ["es2017", "es7", "es6", "DOM"],
+		"baseUrl": ".",
+		"resolveJsonModule": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
 		"noImplicitAny": true,
 		"noImplicitThis": true,
-		"strictNullChecks": true,
-		"strictFunctionTypes": true,
-		"types": [],
-		"noEmit": true,
-		"forceConsistentCasingInFileNames": true
+		"declaration": false,
+		"allowJs": true,
+		"paths": {
+			"@translations/*": ["./app/translations/*"],
+			"@configs/*": ["./app/configs/*"],
+			"@app/*": ["./app/*"]
+		},
+		"typeRoots": ["app/**/types", "node_modules/@types"],
+		"plugins": [{ "transform": "typescript-transform-paths" }, { "transform": "typescript-transform-paths", "afterDeclarations": true }]
 	},
-	"files": ["**/*.d.ts"]
+	"include": ["app/**/*"],
+	"exclude": ["node_modules/*", "dist/*", "scripts/*"]
 }

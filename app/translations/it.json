@@ -1,0 +1,9 @@
+{
+	"contributions": {
+		"language": "Italian",
+		"license": "CC BY 4.0",
+		"contributors": ["Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)"]
+	},
+	"app_name": "node-module-boilerplate",
+	"hello": "Ciao Mondo!"
+}

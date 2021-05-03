@@ -1,5 +1,5 @@
 {
-	"projectName": "ptkdev-logger",
+	"projectName": "ptkdev-boilerplate/node-module-boilerplate",
 	"projectOwner": "ptkdev",
 	"repoType": "github",
 	"repoHost": "https://github.com",
@@ -19,61 +19,6 @@
 				"translation",
 				"doc",
 				"bug"
-			]
-		},
-		{
-			"login": "agoalofalife",
-			"name": "Ilua Chubarov",
-			"avatar_url": "https://avatars1.githubusercontent.com/u/15719824?v=4",
-			"profile": "https://github.com/agoalofalife",
-			"contributions": [
-				"code"
-			]
-		},
-		{
-			"login": "Bruck1701",
-			"name": "Bruno Kümmel",
-			"avatar_url": "https://avatars2.githubusercontent.com/u/17711277?v=4",
-			"profile": "https://github.com/Bruck1701",
-			"contributions": [
-				"code",
-				"translation"
-			]
-		},
-		{
-			"login": "alinaosv",
-			"name": "Alina Osv",
-			"avatar_url": "https://avatars3.githubusercontent.com/u/60554247?v=4",
-			"profile": "https://github.com/alinaosv",
-			"contributions": [
-				"translation"
-			]
-		},
-		{
-			"login": "Syltech",
-			"name": "Sylvain Téchené",
-			"avatar_url": "https://avatars1.githubusercontent.com/u/3882925?v=4",
-			"profile": "https://github.com/Syltech",
-			"contributions": [
-				"translation"
-			]
-		},
-		{
-			"login": "GiovanniCardamone",
-			"name": "Giovanni Cardamone",
-			"profile": "https://github.com/giovannicardamone",
-			"avatar_url": "https://avatars1.githubusercontent.com/u/5117748?v=4",
-			"contributions": [
-				"code"
-			]
-		},
-		{
-			"login": "leunardo",
-			"name": "Leonardo Alves",
-			"profile": "https://github.com/leunardo",
-			"avatar_url": "https://avatars1.githubusercontent.com/u/22580233?v=4",
-			"contributions": [
-				"code"
 			]
 		}
 	],

@@ -1,84 +1,90 @@
 {
-	"name": "@ptkdev/logger",
-	"description": "Beautiful Logger for Node.js: the best alternative to the console.log statement",
-	"version": "1.7.4",
-	"main": "modules/logger.js",
+	"name": "@ptkdev/node-module-boilerplate",
+	"displayName": "Node NPM Library Boilerplate",
+	"description": "Create your npm library with this friendly boilerplate. Use this respository as template for your new node library/module",
+	"version": "1.0.20210412",
+	"main": "dist/functions/module.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"author": "Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)",
 	"license": "MIT",
 	"license-docs": "CC BY 4.0",
 	"license-translations": "CC BY 4.0",
 	"license-images": "CC BY-NC 4.0",
-	"homepage": "https://logger.ptkdev.io",
-	"docs": "https://docs.logger.ptkdev.io",
+	"homepage": "https://github.com/ptkdev-boilerplate/node-module-boilerplate",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ptkdev/ptkdev-logger.git"
+		"url": "https://github.com/ptkdev-boilerplate/node-module-boilerplate.git"
 	},
 	"bugs": {
-		"url": "https://github.com/ptkdev/ptkdev-logger/issues"
+		"url": "https://github.com/ptkdev-boilerplate/node-module-boilerplate/issues"
+	},
+	"engines": {
+		"node": ">=14.0.0"
 	},
 	"scripts": {
-		"example": "cd examples && node examples/example.js",
-		"clean": "rm -rf node_modules package-lock.json && npm install",
-		"update": "rm -f package-lock.json && npm update",
-		"lint": "eslint ./ --cache --ignore-pattern .gitignore",
-		"lint-fix": "eslint ./ --cache --ignore-pattern .gitignore --fix",
-		"git-set-upstream": "git remote add upstream git@github.com:ptkdev/ptkdev-logger.git && git fetch upstream",
-		"git-pull-upstream": "git pull upstream master && git pull upstream beta && git pull upstream nightly",
+		"init": "npm install && husky install",
+		"setup": "ts-node --skip-project scripts/setup.ts && ts-node --skip-project scripts/changelog.ts && npm run pre-commit",
+		"start": "node dist/functions/run.js",
+		"dev": "ts-node scripts/configs.ts && ts-node scripts/debug.ts --enable && ts-node scripts/rmdist.ts && nodemon --exec 'npm run build && npm run start'",
+		"build": "ttsc",
+		"release": "ts-node scripts/configs.ts && ts-node scripts/debug.ts --disable && npm run build && ttsc --declaration --emitDeclarationOnly",
+		"test": "jest app",
+		"docs": "git submodule update --recursive && markserv ./README.md",
+		"lint": "npm run lint-prettify && eslint . --cache --ext .ts,.js",
+		"lint-fix": "npm run lint-prettify && eslint . --cache --ext .ts,.js --fix",
+		"lint-prettify": "prettier --write **/*.{ts,md,json}",
+		"git-set-upstream": "git remote add upstream git@github.com:ptkdev-boilerplate/node-module-boilerplate.git && git fetch upstream",
+		"git-pull-upstream": "git pull upstream main && git pull upstream beta && git pull upstream nightly",
 		"git-pull": "git pull --recursive",
 		"git-ignore-reset": "git rm -r --cached . && git add . && git commit -m \"[Fix] Removing all files in .gitignore\"",
-		"npm-publish-master": "git checkout master && npm publish",
+		"npm-publish-main": "git checkout main && npm publish",
 		"npm-publish-beta": "git checkout beta && npm publish --tag beta",
 		"npm-publish-nightly": "git checkout nightly && npm publish --tag nightly",
-		"docs": "git submodule update --recursive && markserv ./README.md",
-		"test": "jest",
 		"contributors-generate": "all-contributors generate",
-		"all-shields-cli": "all-shields-generate"
+		"all-shields-generate": "all-shields-generate",
+		"pre-commit": "npm run contributors-generate && npm run all-shields-generate && npm run lint-fix && npm run test",
+		"pkg-clean": "rm -rf node_modules package-lock.json && npm install && husky install",
+		"pkg-update": "npm update",
+		"pkg-upgrade": "npx npm-check-updates -u && npm install && husky install"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run lint && npm run contributors-generate && npm run all-shields-cli"
-		}
+	"devDependencies": {
+		"@ptkdev/all-shields-cli": "^2.0.0",
+		"@types/jest": "^26.0.22",
+		"@types/node": "^14.14.41",
+		"@types/shelljs": "^0.8.8",
+		"@typescript-eslint/eslint-plugin": "^4.22.0",
+		"@typescript-eslint/parser": "^4.22.0",
+		"all-contributors-cli": "^6.20.0",
+		"eslint": "^7.24.0",
+		"eslint-plugin-jest": "^24.3.5",
+		"eslint-plugin-jsdoc": "^32.3.0",
+		"husky": "^6.0.0",
+		"jest": "^26.6.3",
+		"json": "^10.0.0",
+		"markserv": "^1.17.4",
+		"nodemon": "^2.0.7",
+		"pm2": "^4.5.6",
+		"prettier": "^2.2.1",
+		"replace-in-file": "^6.2.0",
+		"shelljs": "^0.8.4",
+		"ts-jest": "^26.5.5",
+		"ts-node": "^9.1.1",
+		"ttypescript": "^1.5.12",
+		"typescript": "^4.2.4",
+		"typescript-transform-paths": "^2.2.3",
+		"yargs": "^16.2.0"
 	},
 	"keywords": [
 		"ptkdev",
-		"logger",
-		"log",
-		"logging",
-		"console.log",
-		"pinojs",
-		"pino-logger",
-		"pino",
-		"typescript"
+		"node",
+		"node-module",
+		"node-library",
+		"node-module-boilerplate",
+		"node-library-boilerplate",
+		"boilerplate",
+		"github-template"
 	],
-	"engines": {
-		"node": ">=10.0.0"
-	},
-	"dependencies": {
-		"rotating-file-stream": "latest",
-		"chalk": "latest",
-		"lowdb": "latest",
-		"fs-extra": "latest",
-		"strip-ansi": "latest"
-	},
-	"devDependencies": {
-		"@ptkdev/all-shields-cli": "latest",
-		"eslint": "latest",
-		"eslint-plugin-jsdoc": "latest",
-		"eslint-plugin-jest": "latest",
-		"all-contributors-cli": "latest",
-		"pm2": "latest",
-		"json": "latest",
-		"jest": "latest",
-		"husky": "latest",
-		"yargs": "latest",
-		"markserv": "latest"
-	},
-	"contributors": [
-		"Ilua Chubarov [@Ilya] <agoalofalife@gmail.com> (https://github.com/agoalofalife)",
-		"Bruno Kummel [@Bruck1701] <kummel@gmail.com> (https://github.com/Bruck1701)",
-		"Alina Osv [@alinaosv] <hixid@ya.ru> (https://github.com/alinaosv)",
-		"Sylvain Téchené [@syltech] <contact@syltech.fr> (https://github.com/Syltech)",
-		"Giovanni Cardamone [@GiovanniCardamone] <g.cardamone2@gmail.com> (https://github.com/GiovanniCardamone)"
-	]
+	"contributors": []
 }

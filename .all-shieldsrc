@@ -5,14 +5,138 @@
 	],
 	"shields": [
 		{
-			"id": "header",
+			"id": "header-badges",
 			"badges": [
 				{
-					"url": "https://www.npmjs.com/package/@ptkdev/all-shields-cli",
+					"url": "https://github.com/ptkdev-boilerplate/node-module-boilerplate/blob/main/CHANGELOG.md",
 					"color": "lightgray",
-					"label": "package name",
-					"title": "package name",
-					"message": "{{name}}",
+					"label": "version",
+					"message": "v{{version}}",
+					"title": "v{{version}}",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://www.npmjs.com/package/@ptkdev/node-module-boilerplate",
+					"color": "#CC3534",
+					"label": "npm",
+					"logo": "npm",
+					"style": "flat",
+					"custom": "/npm/v/@ptkdev/node-module-boilerplate?color=CC3534&logo=npm",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-boilerplate/node-module-boilerplate/blob/main/LICENSE.md",
+					"color": "brightgreen",
+					"label": "license",
+					"message": "{{license}}",
+					"title": "License: {{license}}",
+					"style": "flat",
+					"logo": "license",
+					"platform": "shields"
+				},
+				{
+					"url": "https://www.typescriptlang.org/",
+					"color": "blue",
+					"label": "language",
+					"message": "typescript",
+					"title": "Language: TypeScript",
+					"style": "flat",
+					"logo": "typescript",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/tc39/ecma262",
+					"color": "#F7DF1E",
+					"label": "ES",
+					"message": "9",
+					"title": "ECMAScript: 2019",
+					"style": "flat",
+					"logo": "javascript",
+					"platform": "shields"
+				},
+				{
+					"url": "https://discord.ptkdev.io",
+					"server_id": "383373985666301975",
+					"title": "Discord Server",
+					"platform": "discord"
+				}
+			]
+		},
+		{
+			"id": "sponsors-badges",
+			"badges": [
+				{
+					"url": "https://www.paypal.me/ptkdev",
+					"color": "#005EA6",
+					"label": "donate",
+					"message": "paypal",
+					"title": "Donate Paypal",
+					"style": "for-the-badge",
+					"logo": "paypal",
+					"platform": "shields"
+				},
+				{
+					"url": "https://ko-fi.com/ptkdev",
+					"color": "#29abe0",
+					"label": "donate",
+					"message": "ko-fi",
+					"title": "Donate Ko-Fi",
+					"style": "for-the-badge",
+					"logo": "ko-fi",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/sponsors/ptkdev",
+					"color": "#ea4aaa",
+					"label": "donate",
+					"message": "sponsors",
+					"title": "Donate Github Sponsors",
+					"style": "for-the-badge",
+					"logo": "github",
+					"platform": "shields"
+				},
+				{
+					"url": "https://www.patreon.com/join/ptkdev",
+					"color": "#F87668",
+					"label": "donate",
+					"message": "patreon",
+					"title": "Donate Patreon",
+					"style": "for-the-badge",
+					"logo": "patreon",
+					"platform": "shields"
+				},
+				{
+					"url": "https://ptk.dev/img/icons/menu/bitcoin_wallet.png",
+					"color": "#E38B29",
+					"label": "BTC",
+					"message": "35jQmZCy4nsxoMM3QPFrnZePDVhdKaHMRH",
+					"title": "Donate Bitcoin",
+					"style": "flat-square",
+					"logo": "bitcoin",
+					"platform": "shields"
+				},
+				{
+					"url": "https://ptk.dev/img/icons/menu/ethereum_wallet.png",
+					"color": "#4E8EE9",
+					"label": "ETH",
+					"message": "0x8b8171661bEb032828e82baBb0B5B98Ba8fBEBFc",
+					"title": "Donate Ethereum",
+					"style": "flat-square",
+					"logo": "ethereum",
+					"platform": "shields"
+				}
+			]
+		},
+		{
+			"id": "projects-badges1",
+			"badges": [
+				{
+					"url": "https://ptk.dev/",
+					"color": "#3498db",
+					"label": "💻 My",
+					"message": "Portfolio",
 					"style": "flat",
 					"logo": "",
 					"platform": "shields"
@@ -20,14 +144,58 @@
 			]
 		},
 		{
-			"id": "donate",
+			"id": "projects-badges2",
 			"badges": [
 				{
-					"url": "https://www.npmjs.com/package/@ptkdev/all-shields-cli",
-					"color": "lightgray",
-					"label": "package name",
-					"title": "package name",
-					"message": "{{name}}",
+					"url": "https://github.com/ptkdev/ptkdev-logger",
+					"color": "#9b59b6",
+					"label": "🦒 Tools",
+					"message": "Node Logger",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev/all-shields-cli",
+					"color": "#9b59b6",
+					"label": "🦌 Tools",
+					"message": "All Shields CLI",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev/chrome-extension-aspectratio219",
+					"color": "#9b59b6",
+					"label": "🖥️ Tools",
+					"message": "Aspect Ratio 21:9",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://availableon.badge.ptkdev.io/",
+					"color": "#9b59b6",
+					"label": "🛡 Tools",
+					"message": "Badges: Available on",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev/json-token-replace",
+					"color": "#9b59b6",
+					"label": "🐾 Tools",
+					"message": "JSON Token Replace",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev/eslint-plugin-snakecasejs",
+					"color": "#9b59b6",
+					"label": "🐍 Tools",
+					"message": "ESLint: snakecasejs",
 					"style": "flat",
 					"logo": "",
 					"platform": "shields"
@@ -35,14 +203,108 @@
 			]
 		},
 		{
-			"id": "projects",
+			"id": "projects-badges3",
 			"badges": [
 				{
-					"url": "https://www.npmjs.com/package/@ptkdev/all-shields-cli",
-					"color": "lightgray",
-					"label": "package name",
-					"title": "package name",
-					"message": "{{name}}",
+					"url": "https://github.com/ptkdev-components/webcomponent-instagram-widget",
+					"color": "#e74c3c",
+					"label": "📸 WebComponent",
+					"message": "Instagram Widget",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-components/webcomponent-patreon-box",
+					"color": "#e74c3c",
+					"label": "👑 WebComponent",
+					"message": "My Patreon Box",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-components/webcomponent-carousel-slideshow",
+					"color": "#e74c3c",
+					"label": "🏞 WebComponent",
+					"message": "Carousel Slideshow",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				}
+			]
+		},
+		{
+			"id": "projects-badges4",
+			"badges": [
+				{
+					"url": "https://github.com/ptkdev/vscode-theme-dark-blood",
+					"color": "#f1c40f",
+					"label": "🎨 Themes",
+					"message": "VSCode",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://t.me/gamebookchatbot",
+					"color": "#34495e",
+					"label": "📚 Bot",
+					"message": "GameBookChat",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-boilerplate?q=svelte",
+					"color": "#f368e0",
+					"label": "👔 Boilerplate",
+					"message": "Svelte",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-boilerplate?q=webcomponent",
+					"color": "#f368e0",
+					"label": "👔 Boilerplate",
+					"message": "WebComponents",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-boilerplate?q=bot",
+					"color": "#f368e0",
+					"label": "👔 Boilerplate",
+					"message": "BOT",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev-boilerplate?q=node",
+					"color": "#f368e0",
+					"label": "👔 Boilerplate",
+					"message": "Node",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://meingifs.pics/",
+					"color": "#2ecc71",
+					"label": "💅 App",
+					"message": "Me in Gifs",
+					"style": "flat",
+					"logo": "",
+					"platform": "shields"
+				},
+				{
+					"url": "https://github.com/ptkdev/ptkdev-stickers#-install-free",
+					"color": "#2ecc71",
+					"label": "📱 App",
+					"message": "Stickers",
 					"style": "flat",
 					"logo": "",
 					"platform": "shields"

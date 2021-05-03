@@ -17,6 +17,7 @@
 *.sql      text eol=lf
 *.ts       text eol=lf
 *.vue      text eol=lf
+*.svelte   text eol=lf
 *.xml      text eol=lf
 *.xhtml    text diff=html eol=lf
 
