@@ -10,7 +10,7 @@
  *
  * Param: don't translate words between ## ##, example: ##ciao##
  *
- * @contributors: Bruno Kummel [@Bruck1701] <kummel@gmail.com> (https://github.com/Bruck1701)
+ * @contributors: Bruno Kummel [@Bruck1701] <kummel@gmail.com> (https://github.com/Bruck1701) / Joel Emanoel [@joelemanoel] <email@joelemanoel.com.br> (https://github.com/joelemanoel)
  *
  * @license: CC BY 4.0 License
  *
@@ -22,5 +22,5 @@ module.exports = {
 	DEBUG: " | DEBUG          ",
 	DOCS: " | DOCUMENTAÇÃO   ",
 	STACKOVERFLOW: " | STACKOVERFLOW  ",
-	SPONSOR: " | SPONSOR        "
+	SPONSOR: " | PATROCINADOR        "
 };
