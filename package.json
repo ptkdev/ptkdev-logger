@@ -1,7 +1,7 @@
 {
 	"name": "@ptkdev/logger",
 	"description": "Beautiful Logger for Node.js: the best alternative to the console.log statement",
-	"version": "1.7.2",
+	"version": "1.8.0",
 	"main": "modules/logger.js",
 	"author": "Patryk Rzucidło [@ptkdev] <support@ptkdev.io> (https://ptk.dev)",
 	"license": "MIT",
@@ -32,7 +32,8 @@
 		"npm-publish-nightly": "git checkout nightly && npm publish --tag nightly",
 		"docs": "git submodule update --recursive && markserv ./README.md",
 		"test": "jest",
-		"contributors-generate": "all-contributors generate"
+		"contributors-generate": "all-contributors generate",
+		"pkg-upgrade": "npx npm-check-updates -u && npm install && husky install"
 	},
 	"husky": {
 		"hooks": {
@@ -54,24 +55,24 @@
 		"node": ">=10.0.0"
 	},
 	"dependencies": {
-		"rotating-file-stream": "latest",
-		"chalk": "latest",
-		"lowdb": "latest",
-		"fs-extra": "latest",
-		"strip-ansi": "latest"
+		"rotating-file-stream": "^2.1.5",
+		"chalk": "^4.1.2",
+		"lowdb": "^1.0.0",
+		"fs-extra": "^10.0.0",
+		"strip-ansi": "^6.0.0"
 	},
 	"devDependencies": {
-		"@ptkdev/all-shields-cli": "latest",
-		"eslint": "latest",
-		"eslint-plugin-jsdoc": "latest",
-		"eslint-plugin-jest": "latest",
-		"all-contributors-cli": "latest",
-		"pm2": "latest",
-		"json": "latest",
-		"jest": "latest",
-		"husky": "latest",
-		"yargs": "latest",
-		"markserv": "latest"
+		"@ptkdev/all-shields-cli": "^2.0.2",
+		"eslint": "^7.32.0",
+		"eslint-plugin-jsdoc": "^36.0.8",
+		"eslint-plugin-jest": "^24.4.0",
+		"all-contributors-cli": "^6.20.0",
+		"pm2": "^5.1.1",
+		"json": "^11.0.0",
+		"jest": "^27.1.0",
+		"husky": "^7.0.2",
+		"yargs": "^17.1.1",
+		"markserv": "^1.17.4"
 	},
 	"contributors": [
 		"Ilua Chubarov [@Ilya] <agoalofalife@gmail.com> (https://github.com/agoalofalife)",
