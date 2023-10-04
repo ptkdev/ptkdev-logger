@@ -112,10 +112,6 @@ class Log {
 		if (typeof options.write === "undefined" || options.write === null) {
 			options.write = false;
 		} else if (typeof options.path === "undefined" || options.path === null) {
-			if (typeof options.debug_log === "undefined" || options.debug_log === null) {
-				options.debug_log = "./debug.log";
-			}
-
 			if (typeof options.error_log === "undefined" || options.error_log === null) {
 				options.error_log = "./errors.log";
 			}
@@ -132,13 +128,15 @@ class Log {
 
 		if (this.config.write === "enabled" || this.config.write === true) {
 			const pad = num => (num > 9 ? "" : "0") + num;
-			rfs.createStream((time, index) => {
-				if (!time) {
-					return this.config.path.debug_log;
-				}
-
-				return `${path.parse(this.config.path.debug_log).base.split(".")[0]}.${time.getFullYear()}${pad(time.getMonth() + 1)}${pad(time.getDate())}-${index}.${path.parse(this.config.path.debug_log).base.split(".")[1]}`;
-			}, this.config.rotate);
+			if (this.config.path.debug_log) {
+				rfs.createStream((time, index) => {
+					if (!time) {
+						return this.config.path.debug_log;
+					}
+	
+					return `${path.parse(this.config.path.debug_log).base.split(".")[0]}.${time.getFullYear()}${pad(time.getMonth() + 1)}${pad(time.getDate())}-${index}.${path.parse(this.config.path.debug_log).base.split(".")[1]}`;
+				}, this.config.rotate);
+			}
 
 			rfs.createStream((time, index) => {
 				if (!time) {
@@ -195,11 +193,13 @@ class Log {
 				}
 				let log_text = `[${this.currentTime()}] [${type.id}] ${tag}${message}\n`;
 
-				fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
-					if (err) {
-						logger.log(err);
-					}
-				});
+				if (this.config.path.debug_log) {
+					fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
+						if (err) {
+							logger.log(err);
+						}
+					});
+				}
 
 				if (type.id === "ERROR") {
 					fse.appendFile(this.config.path.error_log, ansi(log_text), (err) => {
