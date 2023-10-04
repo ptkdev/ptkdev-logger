@@ -185,13 +185,13 @@ class Log {
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
-	appendFile(type = "INFO", tag = "", message = "") {
+	appendFile(type = "INFO", tag = "", ...message) {
 		if (this.config.write === "enabled" || this.config.write === true) {
 			if (this.config.type === "log") {
 				if (tag !== "") {
 					tag = `${tag}: `;
 				}
-				let log_text = `[${this.currentTime()}] [${type.id}] ${tag}${message}\n`;
+				let log_text = `[${this.currentTime()}] [${type.id}] ${tag}${message.join(' ')}\n`;
 
 				if (this.config.path.debug_log) {
 					fse.appendFile(this.config.path.debug_log, ansi(log_text), (err) => {
@@ -256,15 +256,15 @@ class Log {
 	 * @param {string} message - error, warning or info description (mandatory)
 	 *
 	 */
-	stdout(type = "INFO", tag = "", message = "") {
+	stdout(type = "INFO", tag = "", ...message) {
 		let time = this.TYPES_LOG.TIME;
 		if (tag !== "") {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
+			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`);
 		} else {
-			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
+			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`));
 		}
 	}
 
@@ -278,15 +278,15 @@ class Log {
 	 * @param {string} message - error, warning or info description (mandatory)
 	 *
 	 */
-	stderr(type = "ERROR", tag = "", message = "") {
+	stderr(type = "ERROR", tag = "", ...message) {
 		let time = this.TYPES_LOG.TIME;
 		if (tag !== "") {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`);
+			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`);
 		} else {
-			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.bgcolor(" ")}${type.color(tag)} ${type.color(message)}`));
+			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`));
 		}
 	}
 
@@ -299,10 +299,10 @@ class Log {
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
-	info(message = "", tag = "") {
+	info(tag = "", ...message) {
 		if (this.config.info === "enabled" || this.config.info === true) {
-			this.stdout(this.TYPES_LOG.INFO, tag, `${message}`);
-			this.appendFile(this.TYPES_LOG.INFO, tag, message);
+			this.stdout(this.TYPES_LOG.INFO, tag, ...message);
+			this.appendFile(this.TYPES_LOG.INFO, tag, ...message);
 		}
 	}
 
@@ -315,7 +315,7 @@ class Log {
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
-	warning(message = "", tag = "") {
+	warning(tag = "", ...message) {
 		if (this.config.warning === "enabled" || this.config.warning === true) {
 			this.stdout(this.TYPES_LOG.WARNING, tag, `${message}`);
 			this.appendFile(this.TYPES_LOG.WARNING, tag, message);
@@ -331,10 +331,10 @@ class Log {
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
-	error(message = "", tag = "") {
+	error(tag = "", ...message) {
 		if (this.config.error === "enabled" || this.config.error === true) {
-			this.stderr(this.TYPES_LOG.ERROR, tag, `${message}`);
-			this.appendFile(this.TYPES_LOG.ERROR, tag, message);
+			this.stderr(this.TYPES_LOG.ERROR, tag, ...message);
+			this.appendFile(this.TYPES_LOG.ERROR, tag, ...message);
 		}
 	}
 
@@ -347,7 +347,7 @@ class Log {
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
-	debug(message = "", tag = "") {
+	debug(tag = "", ...message) {
 		if (this.config.debug === "enabled" || this.config.debug === true) {
 			this.stdout(this.TYPES_LOG.DEBUG, tag, `${message}`);
 			this.appendFile(this.TYPES_LOG.DEBUG, tag, message);
@@ -381,7 +381,7 @@ class Log {
 	 * @param {string} error_message - error message to stackoverflow (optional)
 	 *
 	 */
-	stackoverflow(message = "", tag = "", error_message = null) {
+	stackoverflow(tag = "", error_message = null, ...message) {
 		if (typeof error_message === "undefined" || error_message === null) {
 			error_message = message;
 		}
@@ -402,9 +402,9 @@ class Log {
 	 * @param {string} tag - func unique tag (optional)
 	 *
 	 */
-	sponsor(message = "", tag = "") {
-		this.stdout(this.TYPES_LOG.SPONSOR, tag, message);
-		this.appendFile(this.TYPES_LOG.SPONSOR, tag, message);
+	sponsor(tag = "", ...message) {
+		this.stdout(this.TYPES_LOG.SPONSOR, tag, ...message);
+		this.appendFile(this.TYPES_LOG.SPONSOR, tag, ...message);
 	}
 }
 
