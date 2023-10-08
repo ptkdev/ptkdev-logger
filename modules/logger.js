@@ -258,13 +258,15 @@ class Log {
 	 */
 	stdout(type = "INFO", tag = "", ...message) {
 		let time = this.TYPES_LOG.TIME;
-		if (tag !== "") {
+		if (tag !== "" && message.length < 1) {
+			tag = ` ${tag}`;
+		} else if (tag !== "" && message.length > 0) {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`);
+			logger.log(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)}`, ...message);
 		} else {
-			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`));
+			logger.log(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)}`, ...message));
 		}
 	}
 
@@ -280,13 +282,15 @@ class Log {
 	 */
 	stderr(type = "ERROR", tag = "", ...message) {
 		let time = this.TYPES_LOG.TIME;
-		if (tag !== "") {
+		if (tag !== "" && message.length < 1) {
+			tag = ` ${tag}`;
+		} else if (tag !== "" && message.length > 0) {
 			tag = ` ${tag}:`;
 		}
 		if (this.config.colors === "enabled" || this.config.colors === true) {
-			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`);
+			logger.error(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)}`, ...message);
 		} else {
-			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)} ${type.color(...message)}`));
+			logger.error(ansi(chalk`${type.bgcolor(type.label)}${time.bgcolor(` ${this.currentTime()} `)}${type.color(tag)}`, ...message));
 		}
 	}
 
